@@ -5,8 +5,8 @@
 void main()
 {
     //  Declaring The Array
-    int n,i,j,k,z,flag=0;
-    printf("Number Of Elements ? :\t");
+    int n,i,j,k,z,temp,flag=0;
+    printf("\nNumber Of Elements ? :\t");
     scanf("%d",&n);
     int a[n];
 
@@ -15,7 +15,7 @@ void main()
     for (i=0; i<n; i++)
     {
         printf("-->\t");
-        scanf("%d",a[i]);
+        scanf("%d",&a[i]);
     }
 
     //  Finding Index Of First Even Number
@@ -38,5 +38,15 @@ void main()
         }
     }
 
-    printf("\n%d %d\n",j,k);
+    //  Swapping The Elements
+    temp = a[j];
+    a[j] = a[k];
+    a[k] = temp;
+
+    //  Printing New Array
+    printf("\nNew Array -->\n");
+    for (i=0; i<n; i++)
+    {
+        printf("%d\t",a[i]);
+    }
 }
