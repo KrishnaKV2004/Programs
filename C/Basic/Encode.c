@@ -8,15 +8,12 @@
 void main()
 {
     //  Declaring Variables and Array
-    int i, len;
+    int i;
     char str[100];
 
     //  Input String
     printf("\nEnter String To Encode : ");
     fgets(str,20,stdin);
-
-    //  Getting Length Of String
-    len = strlen(str);
 
     //  Encoding
     for (i=0; str[i]!='\0'; i++)
