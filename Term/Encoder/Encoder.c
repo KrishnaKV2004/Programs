@@ -22,8 +22,8 @@ void main()
 
     //  Selecting Function To Perform As Per The Choice -->
     switch (choice)
-    {Jai Shree Ram  Mod
-
+    {
+        
     case 'E' :
     case 'e' :
 
