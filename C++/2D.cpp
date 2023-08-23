@@ -57,4 +57,6 @@ int main()
     }
 
     cout << "\nSum = " << sum;
+
+    return 0;
 }
