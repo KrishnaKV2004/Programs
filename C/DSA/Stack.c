@@ -58,28 +58,32 @@ void Push(int Stack[], int *Top)
 {
     if (*Top == MAX-1)
     {
-        printf("\nStack Overflow");
+        printf("\nStack Overflow\n");
     }
+    else
+    {
+        int num;
 
-    int num;
+        printf("\nEnter Number To Push : ");
+        scanf("%d",&num);
 
-    printf("\nEnter Number To Push : ");
-    scanf("%d",&num);
+        (*Top)++;
 
-    (*Top)++;
-
-    Stack[*Top] = num;
+        Stack[*Top] = num;
+    }
 }
 
 void Pop(int Stack[], int *Top)
 {
     if (*Top == -1)
     {
-        printf("\nStack Underflow");
+        printf("\nStack Underflow\n");
     }
-
-    printf("%d",Stack[*Top]);
-    (*Top)--;
+    else
+    {
+        printf("%d\n",Stack[*Top]);
+        (*Top)--;
+    }
 }
 
 void Disp(int Stack[], int Top)
@@ -88,25 +92,29 @@ void Disp(int Stack[], int Top)
 
     if (Top == -1)
     {
-        printf("\nStack Underflow");
+        printf("\nStack Underflow\n");
     }
-
-    printf("\n");
-
-    for (i=Top; i>-1; i--)
+    else
     {
-        printf("%d ",Stack[i]);
-    }
+        printf("\n");
 
-    printf("\n");
+        for (i=Top; i>-1; i--)
+        {
+            printf("%d ",Stack[i]);
+        }
+
+        printf("\n");
+    }
 }
 
 void Peek(int Stack[], int Top)
 {
     if (Top == -1)
     {
-        printf("\nStack Underflow");
+        printf("\nStack Underflow\n");
     }
-
-    printf("\n%d",Stack[Top]);
+    else
+    {
+        printf("%d\n",Stack[Top]);
+    }
 }
