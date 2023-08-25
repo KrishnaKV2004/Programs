@@ -107,7 +107,7 @@ void Disp(int Queue[], int Front, int Rear)
         while (tmp!=Rear)
         {
             printf("%d ",Queue[tmp]);
-            tmp = (temp+1)%MAX;
+            tmp = (tmp+1)%MAX;
             printf("%d",Queue[tmp]);
         }
     }
