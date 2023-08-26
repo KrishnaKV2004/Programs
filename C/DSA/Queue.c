@@ -1,102 +1,109 @@
 #include <stdio.h>
 
-# define MAX 10
+#define MAX 10
 
 int Enq(int [], int, int);
 int Deq(int [], int, int);
 void Disp(int [], int, int);
-void Peek(int [], int, int);
+void Peek(int [], int);
 
 int main()
 {
-    int ch, con;
+    int ch;
+    char con;
     int Front = -1, Rear = -1;
     int Queue[MAX];
 
-    menu:
-    
+    do
+    {
         printf("\nEnter [1] To Enqueue");
         printf("\nEnter [2] To Dequeue");
         printf("\nEnter [3] To Display");
         printf("\nEnter [4] To Peek");
-        printf("\n\nEnter Choice : ");
+        printf("\n\nEnter Choice: ");
         scanf("%d", &ch);
 
-    switch (ch)
-    {
-    case 1:
-        Rear = Enq(Queue, Front, Rear);
-
-        if (Front==-1)
+        switch (ch)
         {
-            Front++;
+            case 1:
+                Rear = Enq(Queue, Front, Rear);
+                if (Front == -1)
+                {
+                    Front = 0;
+                }
+                break;
+
+            case 2:
+                Front = Deq(Queue, Front, Rear);
+                break;
+
+            case 3:
+                Disp(Queue, Front, Rear);
+                break;
+
+            case 4:
+                Peek(Queue, Front);
+                break;
+
+            default:
+                printf("\nInvalid Input !");
+                break;
         }
 
-        break;
+        printf("\nDo You Want To Continue? [Y/N]: ");
+        scanf(" %c", &con);
 
-    case 2:
-        Front = Deq(Queue, Front, Rear);
-        break;
-    
-    case 3:
-        Disp(Queue, Front, Rear);
-        break;
-
-    case 4:
-        Peek(Queue, Front, Rear);
-        break;
-
-    default:
-        printf("\nInvalid Input !");
-        break;
-    }
-
-    printf("Do You Want To Continue ? [Y/N] : ");
-    scanf(" %c",&con);
-
-    if (con=='Y' || con=='y')
-    {
-        goto menu;
-    }
+    } while (con == 'Y' || con == 'y');
 }
 
 int Enq(int Queue[], int Front, int Rear)
 {
     int ins;
 
-    if ((Rear+1)%MAX==Front)
+    if ((Rear + 1) % MAX == Front)
     {
-        printf("\nQueue Is Full");
+        printf("\nQueue Is Full\n");
     }
     else
     {
-        printf("\nInput Element : ");
-        scanf("%d",&ins);
+        printf("\nInput Element: ");
+        scanf("%d", &ins);
 
-        Rear = (Rear+1)%MAX;
+        Rear = (Rear + 1) % MAX;
 
         Queue[Rear] = ins;
     }
+
+    return Rear;
 }
 
 int Deq(int Queue[], int Front, int Rear)
 {
-    if (Front==-1)
+    if (Front == -1)
     {
         printf("\nQueue Is Empty\n");
     }
     else
     {
-        printf("%d",Queue[Front]);
-        Front = (Front+1)%MAX;
+        printf("%d\n", Queue[Front]);
+        if (Front == Rear)
+        {
+            Front = -1;
+        }
+        else
+        {
+            Front = (Front + 1) % MAX;
+        }
     }
+
+    return Front;
 }
 
 void Disp(int Queue[], int Front, int Rear)
 {
     int tmp;
 
-    if (Front==-1)
+    if (Front == -1)
     {
         printf("\nQueue Is Empty\n");
     }
@@ -104,23 +111,23 @@ void Disp(int Queue[], int Front, int Rear)
     {
         tmp = Front;
 
-        while (tmp!=Rear)
+        while (tmp != Rear)
         {
-            printf("%d ",Queue[tmp]);
-            tmp = (tmp+1)%MAX;
-            printf("%d",Queue[tmp]);
+            printf("%d ", Queue[tmp]);
+            tmp = (tmp + 1) % MAX;
         }
+        printf("%d\n", Queue[tmp]);  // Print the last element
     }
 }
 
-void Peek(int Queue[], int Front, int Rear)
+void Peek(int Queue[], int Front)
 {
-    if (Front==-1)
+    if (Front == -1)
     {
         printf("\nQueue Is Empty\n");
     }
     else
     {
-        printf("%d",Queue[Front]);
+        printf("%d", Queue[Front]);
     }
 }
