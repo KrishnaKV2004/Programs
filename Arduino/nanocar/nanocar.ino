@@ -15,6 +15,7 @@ void setup() {
   radio.begin();
   radio.openWritingPipe(address);
   radio.setPALevel(RF24_PA_MIN);
+  
   radio.stopListening();
 }
 
@@ -58,5 +59,6 @@ if((mappedJoy1Y<250)&&(mappedJoy1Y>-250))
  
   // Send data packet
   radio.write(&data, sizeof(data));
+  delay(10);
   
 }

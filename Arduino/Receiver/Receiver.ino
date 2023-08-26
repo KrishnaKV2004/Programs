@@ -3,7 +3,7 @@
 #include <RF24.h>
 
 RF24 radio(7, 8); // NRF24L01 pins (CE, CSN)
-const byte address[6] = "00001";
+const byte address[32] = "00001";
 
 
 void setup() {
