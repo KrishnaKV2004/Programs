@@ -1,13 +1,11 @@
 #include <stdio.h>
-
 typedef struct list
 {
     int data;
     struct list *next;
-} ls;
+} list;
 
 void main()
 {
-    int 
-    ls.*p
+    
 }
