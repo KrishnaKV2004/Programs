@@ -1,101 +1,117 @@
 #include <stdio.h>
+#include <stdlib.h>
 typedef struct list
 {
     int data;
-    struct list *node;
+    struct list *next;
 } ls;
 
-ls ins();
-ls del();
-ls view();
-ls peek();
+ls* insert(ls *head);
+ls* delete(ls *head);
+void view(ls *head);
 
 int main()
 {
-    ls *p = NULL;
-    ls *R = NULL, *L = NULL;
+    ls *head = NULL;
     char ch, con;
 
-    menu :
+menu:
 
-        printf("\nEnter [I] To Insert Element");
-        printf("\nEnter [D] To Delete Element");
-        printf("\nEnter [V] To View Elements");
-        printf("\nEnter [P] To Peek Element");
-        printf("\n\nEnter Choice : ");
-        scanf(" %c",&ch);
+    printf("\nEnter [I] To Insert Element");
+    printf("\nEnter [D] To Delete Element");
+    printf("\nEnter [V] To View Elements");
+    printf("\n\nEnter Choice : ");
+    scanf(" %c", &ch);
 
-        switch (ch)
-        {
-            case 'I' :
-            case 'i' :
-            
-                break;
+    switch (ch)
+    {
+    case 'I':
+    case 'i':
+        head = insert(head);
+        break;
 
-            case 'D' :
-            case 'd' :
+    case 'D':
+    case 'd':
+        head = delete(head);
+        break;
 
-                break;
+    case 'V':
+    case 'v':
+        view(head);
+        break;
 
-            case 'V' :
-            case 'v' :
+    default:
+        break;
+    }
 
-                break;
+    printf("\nDo You Want To Continue ? [Y/N] : ");
+    scanf(" %c", &con);
 
-            case 'P' :
-            case 'p' :
-
-                break;
-
-            default:
-                break;
-        }
-
-        printf("\nDo You Want To Continue ? [Y/N] : ");
-        scanf(" %c",&con);
-
-        if (con == 'y' || con == 'Y')
-        {
-            goto menu;
-        }
-        else
-        {
-            exit;
-        }
+    if (con == 'y' || con == 'Y')
+    {
+        goto menu;
+    }
+    else
+    {
+        exit(0);
+    }
 
     return 0;
 }
 
-ls ins()
+ls* insert(ls *head)
 {
     int val;
-    struct ls *ptr = (struct ls *) malloc (sizeof(struct ls));
+    printf("\nEnter Value : ");
+    scanf("%d", &val);
 
-    if (ptr == NULL)
+    ls *newNode = (ls *)malloc(sizeof(ls));
+    if (newNode == NULL)
     {
         printf("\nMemory Not Allocated !\n");
+        return head;
+    }
+
+    newNode->data = val;
+    newNode->next = NULL;
+
+    if (head == NULL)
+    {
+        head = newNode;
     }
     else
     {
-        printf("\nEnter Value : ");
-        scanf("%d",&val);
-
-        ptr->data = val;
-        
+        ls *temp = head;
+        while (temp->next != NULL)
+        {
+            temp = temp->next;
+        }
+        temp->next = newNode;
     }
+
+    return head;
 }
 
-ls del()
+ls* delete(ls *head)
 {
-
+    return head;
 }
 
-ls view()
+void view(ls *head)
 {
-
-}
-
-ls peek()
-{
-
+    if (head == NULL)
+    {
+        printf("\nNo Data To Display !\n");
+    }
+    else
+    {
+        printf("\nElements in the list : ");
+        ls *temp = head;
+        while (temp != NULL)
+        {
+            printf("%d ", temp->data);
+            temp = temp->next;
+        }
+        printf("\n");
+    }
 }
