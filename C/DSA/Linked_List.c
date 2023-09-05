@@ -2,7 +2,7 @@
 typedef struct list
 {
     int data;
-    struct list *next;
+    struct list *node;
 } ls;
 
 ls ins();
@@ -68,7 +68,21 @@ int main()
 
 ls ins()
 {
+    int val;
+    struct ls *ptr = (struct ls *) malloc (sizeof(struct ls));
 
+    if (ptr == NULL)
+    {
+        printf("\nMemory Not Allocated !\n");
+    }
+    else
+    {
+        printf("\nEnter Value : ");
+        scanf("%d",&val);
+
+        ptr->data = val;
+        
+    }
 }
 
 ls del()
@@ -83,5 +97,5 @@ ls view()
 
 ls peek()
 {
-    
+
 }
