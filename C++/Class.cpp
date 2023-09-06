@@ -44,11 +44,12 @@ class Tax_calc
 
         string name;
         int empcode;
-        double income;
         double tax;
 
     public :
 
+        double income;
+        
         void info()
         {
             cout << "\nEnter Name : ";
@@ -96,9 +97,24 @@ int main()
         obj[i].calctax();
     }
 
+    cout << "\nTax Payers -->\n";
+
     for (i=0; i<n; i++)
     {
-        obj[i].showInfo();
+        if (obj[i].income>=500000)
+        {
+            obj[i].showInfo();
+        }
+    }
+
+    cout << "\nNot Paying Tax -->\n";
+
+    for (i=0; i<n; i++)
+    {
+        if (obj[i].income<=500000)
+        {
+            obj[i].showInfo();
+        }
     }
 
     return 0;
