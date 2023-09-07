@@ -19,10 +19,13 @@ class student
 
         void info()
         {
+            cin.ignore();
+
             cout << "\nStudent Name : ";
-            cin >> name;
+            getline(cin, name);
             cout << "Course : ";
-            cin >> course;
+            getline(cin, course);
+
             cout << "Roll Number : ";
             cin >> roll;
             cout << "Marks In Logic Design : ";
