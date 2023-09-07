@@ -37,7 +37,6 @@
 #include <iostream>
 
 using namespace std;
-
 class Tax_calc
 {
     private:
