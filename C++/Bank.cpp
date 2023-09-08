@@ -11,11 +11,13 @@ class Bank
     public :
 
         int amn;
+        int acc_v;
         int acc = 1001;
         double bal = 0 ;
 
         void info()
         {
+            cin.ignore();
             cout << "\nEnter Name : ";
             getline(cin, name);
             cout << "Enter Address : ";
@@ -34,10 +36,14 @@ class Bank
 
         void depo()
         {
+            cout << "\nEnter Account Number : ";
+            cin >> acc_v;
             cout << "\nEnter Amount To Deposit : ";
             cin >> amn;
 
+            depo[acc_v-1000].bal = depo[acc_v-1000].bal + amn;
             bal = bal + amn;
+
             cout << "New Balance --> " << bal;
         }
 
@@ -82,9 +88,9 @@ int main()
             case 'A':
             case 'a':
                 dep[n].info();
-                cout << "\nAccount Number --> " << acc;
+                cout << "\nAccount Number --> " << dep[n].acc;
                 n++;
-                acc++;
+                dep[n].acc++;
                 break;
 
             case 'C':
@@ -95,7 +101,7 @@ int main()
             case 'B':
             case 'b':
                 cout << "\nEnter Account Number : ";
-                cin >> 
+                cin >> acc_v;
                 dep[i].check();
                 break;
 
