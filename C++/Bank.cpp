@@ -26,7 +26,8 @@ class Bank
 
         void ch_add()
         {
-
+            cout << "\nEnter New Address : ";
+            getline(cin, add);
         }
 
         void check()
@@ -36,12 +37,9 @@ class Bank
 
         void depo()
         {
-            cout << "\nEnter Account Number : ";
-            cin >> acc_v;
             cout << "\nEnter Amount To Deposit : ";
             cin >> amn;
 
-            depo[acc_v-1000].bal = depo[acc_v-1000].bal + amn;
             bal = bal + amn;
 
             cout << "New Balance --> " << bal;
@@ -95,24 +93,30 @@ int main()
 
             case 'C':
             case 'c':
-                dep[i].ch_add();
+                cout << "\nEnter Account Number : ";
+                cin >> acc_v;
+                dep[acc_v-1000].ch_add();
                 break;
 
             case 'B':
             case 'b':
                 cout << "\nEnter Account Number : ";
                 cin >> acc_v;
-                dep[i].check();
+                dep[acc_v-1000].check();
                 break;
 
             case 'D':
             case 'd':
-                dep[i].depo();
+                cout << "\nEnter Account Number : ";
+                cin >> acc_v;
+                dep[acc_v-1000].depo();
                 break;
 
             case 'W':
             case 'w':
-                dep[i].wdr();
+                cout << "\nEnter Account Number : ";
+                cin >> acc_v;
+                dep[acc_v-1000].wdr();
                 break;
 
             default:
