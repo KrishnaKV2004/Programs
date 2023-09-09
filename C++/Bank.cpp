@@ -26,6 +26,7 @@ class Bank
 
         void ch_add()
         {
+            cin.ignore();
             cout << "\nEnter New Address : ";
             getline(cin, add);
         }
@@ -78,6 +79,7 @@ int main()
         cout << "\nEnter [B] To Check Balance";
         cout << "\nEnter [D] To Deposit Money";
         cout << "\nEnter [W] To Withdraw Money";
+        cout << "\nEnter [S] To Show Information";
         cout << "\n\nEnter Your Choice : ";
         cin >> choice;
 
@@ -117,6 +119,13 @@ int main()
                 cout << "\nEnter Account Number : ";
                 cin >> acc_v;
                 dep[acc_v-1000].wdr();
+                break;
+
+            case 'S':
+            case 's':
+                cout << "\nEnter Account Number : ";
+                cin >> acc_v;
+                dep[acc_v-1000].show();
                 break;
 
             default:
