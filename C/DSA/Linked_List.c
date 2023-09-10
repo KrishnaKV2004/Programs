@@ -25,23 +25,24 @@ menu:
 
     switch (ch)
     {
-    case 'I':
-    case 'i':
-        head = insert(head);
-        break;
+        case 'I':
+        case 'i':
+            head = insert(head);
+            break;
 
-    case 'D':
-    case 'd':
-        head = delete(head);
-        break;
+        case 'D':
+        case 'd':
+            head = delete(head);
+            break;
 
-    case 'V':
-    case 'v':
-        view(head);
-        break;
+        case 'V':
+        case 'v':
+            view(head);
+            break;
 
-    default:
-        break;
+        default:
+            printf("\nInvalid Input !");
+            break;
     }
 
     printf("\nDo You Want To Continue ? [Y/N] : ");
