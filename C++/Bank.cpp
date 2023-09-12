@@ -79,7 +79,7 @@ int main()
         cout << "\nEnter [B] To Check Balance";
         cout << "\nEnter [D] To Deposit Money";
         cout << "\nEnter [W] To Withdraw Money";
-        cout << "\nEnter [S] To Show Information";
+        cout << "\nEnter [S] To Show";
         cout << "\n\nEnter Your Choice : ";
         cin >> choice;
 
