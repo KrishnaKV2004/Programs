@@ -75,8 +75,8 @@ int main()
 
         cout << "\nWelcome To HDFC Bank !\n";
         cout << "\nEnter [A] To Add Account";
-        cout << "\nEnter [C] To Change Address";
         cout << "\nEnter [B] To Check Balance";
+        cout << "\nEnter [C] To Change Address";
         cout << "\nEnter [D] To Deposit Money";
         cout << "\nEnter [W] To Withdraw Money";
         cout << "\nEnter [S] To Show Information";
