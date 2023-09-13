@@ -51,8 +51,15 @@ class Bank
             cout << "\nEnter Amount To Withdraw : ";
             cin >> amn;
 
-            bal = bal - amn;
-            cout << "New Balance --> " << bal;
+            if (amn > bal)
+            {
+                cout << "\nNot Enough Money To Withdraw !";
+            }
+            else
+            {
+                bal = bal - amn;
+                cout << "New Balance --> " << bal;
+            }
         }
 
         void show()
