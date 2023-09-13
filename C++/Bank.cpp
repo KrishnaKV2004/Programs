@@ -89,7 +89,6 @@ int main()
             case 'a':
                 dep[n].info();
                 cout << "\nAccount Number --> " << dep[n].acc;
-                n++;
                 dep[n].acc++;
                 break;
 
