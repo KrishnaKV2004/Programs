@@ -33,7 +33,7 @@ class Bank
 
         void check()
         {
-            cout << "\nBalance --> " << bal;
+            cout << "\nBalance --> RS " << bal;
         }
 
         void depo()
