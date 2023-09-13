@@ -13,8 +13,6 @@ class Bank
 
     public :
 
-        int acc_v;
-
         void info()
         {
             cin.ignore();
@@ -22,6 +20,8 @@ class Bank
             getline(cin, name);
             cout << "Enter Address : ";
             getline(cin, add);
+            cout << "\nAccount Number --> " << acc;
+            acc++;
         }
 
         void ch_add()
@@ -88,8 +88,6 @@ int main()
             case 'A':
             case 'a':
                 dep[n].info();
-                cout << "\nAccount Number --> " << dep[n].acc;
-                dep[n].acc++;
                 break;
 
             case 'C':
