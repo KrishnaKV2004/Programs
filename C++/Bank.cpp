@@ -7,13 +7,13 @@ class Bank
 
         string name;
         string add;
+        int amn;
+        int acc = 1001;
+        double bal = 0 ;
 
     public :
 
-        int amn;
         int acc_v;
-        int acc = 1001;
-        double bal = 0 ;
 
         void info()
         {
