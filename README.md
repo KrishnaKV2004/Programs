@@ -1,5 +1,5 @@
 <h1 align="center">Hi 👋, I'm Krishna Verma</h1>
-<h3 align="center">A Passionate Programmer from India</h3>
+<h3 align="center">A Passionate Programmer From Bharat/h3>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=krishnakv2004&label=Profile%20views&color=0e75b6&style=flat" alt="krishnakv2004" /> </p>
 
