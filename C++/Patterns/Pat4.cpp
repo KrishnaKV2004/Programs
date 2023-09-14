@@ -1,3 +1,11 @@
+/* 
+    1 3 5 7 9
+    3 5 7 9 1
+    5 7 9 1 3
+    7 9 1 3 5
+    9 1 3 5 7
+*/
+
 #include <iostream>
 
 using namespace std;
