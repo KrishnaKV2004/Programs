@@ -23,7 +23,7 @@ menu:
     printf("\n\nEnter Choice : ");
     scanf(" %c", &ch);
 
-    switch (ch)
+    switch (ch) 
     {
         case 'I':
         case 'i':
