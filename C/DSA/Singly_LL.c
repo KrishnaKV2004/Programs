@@ -70,7 +70,7 @@ int main()
                 case 'f' :
                     
                     //  Function To Insert Node At First Position
-                    head = f_ins(nd *head);
+                    head = f_ins(head);
                     break;
             
                 //  To Insert At Last Position -->
@@ -79,7 +79,7 @@ int main()
                 case 'l' :
 
                     //  Function To Insert Node At Last Position
-                    head = l_ins(nd *head);
+                    head = l_ins(head);
                     break;
 
                 //  To Insert At Custom Position -->
@@ -88,7 +88,7 @@ int main()
                 case 'c' :
 
                     //  Function To Insert Node At Specific Position
-                    head = c_ins(nd *head);
+                    head = c_ins(head);
                     break;
 
                 default:
@@ -121,21 +121,21 @@ int main()
                 case 'f' :
                     
                     //  Function To Delete First Node
-                    head = f_del(nd *head);
+                    head = f_del(head);
                     break;
             
                 case 'L' :
                 case 'l' :
 
                     //  Function To Delete Last Node
-                    head = l_del(nd *head);
+                    head = l_del(head);
                     break;
 
                 case 'C' :
                 case 'c' :
 
                     //  Function To Delete Custom Node
-                    head = c_del(nd *head);
+                    head = c_del(head);
                     break;
 
                 default:
@@ -167,7 +167,7 @@ int main()
                 case 'a' :
                     
                     //  Function To view Entire Linked List
-                    f_view(nd *head);
+                    f_view(head);
                     break;
 
                 //  To View Data At A Specific Node
@@ -175,7 +175,7 @@ int main()
                 case 'n' :
 
                     //  Function To View Data At Specific Node
-                    c_view(nd *head);
+                    c_view(head);
                     break;
 
                 default :
@@ -196,10 +196,27 @@ int main()
     return 0;
 }
 
+//  Function Definition -->
+
 nd* f_ins(nd *head)
 {
     int val;
     nd *new_node = (nd*) malloc(sizeof(nd));
+
+    if (*new_node == NULL)
+    {
+        printf("\nSorry ! Memory Not Allocated");
+        return head;
+    }
+
+    printf("\nEnter Data --> ");
+    scanf("%d", &val);
+
+    new_node->data = val;
+    new_node->next = head;
+    head = new_node;
+
+    return head;
 }
 
 nd* l_ins(nd *head)
@@ -229,7 +246,11 @@ nd* c_del(nd *head)
 
 void f_view(nd *head)
 {
-
+    while (head != NULL)
+    {
+        printf("\nData --> %d", head->data);
+        head = head->next;
+    }
 }
 
 void c_view(nd *head)

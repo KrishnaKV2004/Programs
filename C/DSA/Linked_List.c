@@ -65,7 +65,7 @@ ls* insert(ls *head)
     int val;
     printf("\nEnter Value : ");
     scanf("%d", &val);
-
+ 
     ls *newNode = (ls *)malloc(sizeof(ls));
     if (newNode == NULL)
     {
