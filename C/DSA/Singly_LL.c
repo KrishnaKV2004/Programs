@@ -184,7 +184,7 @@ int main()
                     default :
 
                         //  Message For Invalid Input Choice
-                        printf("\nInvalid Operation !");
+                        printf("\nInvalid Operation !\n");
                         break;
                 }    
                 break;
