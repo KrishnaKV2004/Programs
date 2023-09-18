@@ -241,7 +241,23 @@ nd* f_ins(nd *head)
 
 nd* l_ins(nd *head)
 {
-    
+    int val;
+    nd *new_node = (nd *)malloc(sizeof(nd));
+
+    if (new_node == NULL)
+    {
+        printf("\nSorry ! Memory Not Allocated");
+        return head;
+    }
+
+    printf("\nEnter Data --> ");
+    scanf("%d", &val);
+
+    if (head == NULL)
+    {
+        new_node->data = val;
+
+    }
 }
 
 nd* c_ins(nd *head)
