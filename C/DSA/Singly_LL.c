@@ -217,9 +217,10 @@ int main()
 
 nd* f_ins(nd *head)
 {
-    int val;
-    nd *new_node = (nd *)malloc(sizeof(nd));
+    int val;    //  To Store Data Value
+    nd *new_node = (nd *)malloc(sizeof(nd));    //  New Node Allocation
 
+    //  Checking If Memory Is Allocated
     if (new_node == NULL)
     {
         //  If Memory Not Allocated
@@ -241,12 +242,14 @@ nd* f_ins(nd *head)
 
 nd* l_ins(nd *head)
 {
-    int val;
-    nd *temp;
-    nd *new_node = (nd *)malloc(sizeof(nd));
+    int val;    //  To Store Data Value
+    nd *temp;   //  Temp Variable To Traverse To The Last Node
+    nd *new_node = (nd *)malloc(sizeof(nd));    //  New Node Allocation
 
+    //  Checking If Memory Is Allocated
     if (new_node == NULL)
     {
+        //  If Memory Not Allocated
         printf("\nSorry ! Memory Not Allocated");
         return head;
     }
@@ -254,23 +257,28 @@ nd* l_ins(nd *head)
     printf("\nEnter Data --> ");
     scanf("%d", &val);
 
+    //  Checking If There Is No Node
     if (head == NULL)
     {
+        //  Updating New Node With Head Info
         new_node->data = val;
         new_node->next = head;
         head = new_node;
 
         return head;
     }
+    //  If Nodes Exists Already
     else
     {
         temp = head;
 
+        //  Traversing To The Last Node
         while (temp->next != NULL)
         {
             temp = temp->next;
         }
 
+        //  Updating New Node With Help Of Temp Info
         new_node->data = val;
         temp->next = new_node;
         new_node->next = NULL;
