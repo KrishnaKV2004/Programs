@@ -224,7 +224,7 @@ nd* f_ins(nd *head)
     if (new_node == NULL)
     {
         //  If Memory Not Allocated
-        printf("\nSorry ! Memory Not Allocated");
+        printf("\nSorry ! Memory Not Allocated\n");
         return head;
     }
 
