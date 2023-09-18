@@ -192,7 +192,7 @@ int main()
             default :
 
                 //  Message For Invalid Input Choice
-                printf("\nInvalid Operation !");
+                printf("\nInvalid Operation !\n");
                 break;
         }
 
@@ -242,6 +242,7 @@ nd* f_ins(nd *head)
 nd* l_ins(nd *head)
 {
     int val;
+    nd *temp;
     nd *new_node = (nd *)malloc(sizeof(nd));
 
     if (new_node == NULL)
@@ -256,8 +257,26 @@ nd* l_ins(nd *head)
     if (head == NULL)
     {
         new_node->data = val;
+        new_node->next = head;
+        head = new_node;
 
+        return head;
     }
+    else
+    {
+        temp = head;
+
+        while (temp->next != NULL)
+        {
+            temp = temp->next;
+        }
+
+        new_node->data = val;
+        temp->next = new_node;
+        new_node->next = NULL;
+    }
+
+    return head;
 }
 
 nd* c_ins(nd *head)
