@@ -15,17 +15,17 @@ typedef struct Node
 
 //  Function Declaration-->
 
-nd* f_ins(nd*);         //  To Insert Node At First Position
-nd* c_ins(nd*);         //  To Insert Node At Custom Position
-nd* l_ins(nd*);         //  To Insert Node At Last Position
+nd* f_ins(nd*);             //  To Insert Node At First Position
+nd* l_ins(nd*);             //  To Insert Node At Last Position
+nd* c_ins(nd*, int);        //  To Insert Node At Custom Position
 
-nd* f_del(nd*);         //  To Delete First Node Of Linked List
-nd* c_del(nd*);         //  To Delete Node From Custom Position
-nd* l_del(nd*);         //  To Delete Last Node Of Linked List
+nd* f_del(nd*);             //  To Delete First Node Of Linked List
+nd* l_del(nd*);             //  To Delete Last Node Of Linked List
+nd* c_del(nd*, int);        //  To Delete Node From Custom Position
 
-void f_view(nd*);       //  To View Full Data In Linked List
-void c_view(nd*);       //  To View Specific Node Data In Linked List
-void nd_cn(int);  //  To Display Number OfNodes In Linked List
+void f_view(nd*);           //  To View Full Data In Linked List
+void c_view(nd*);           //  To View Specific Node Data In Linked List
+void nd_cn(int);            //  To Display Number OfNodes In Linked List
 
 //  Main Function -->
 
@@ -95,7 +95,7 @@ int main()
                     case 'c' :
 
                         //  Function To Insert Node At Specific Position
-                        head = c_ins(head);
+                        head = c_ins(head, node_count);
                         node_count ++;
                         break;
 
@@ -145,7 +145,7 @@ int main()
                     case 'c' :
 
                         //  Function To Delete Custom Node
-                        head = c_del(head);
+                        head = c_del(head, node_count);
                         node_count --;
                         break;
 
@@ -302,7 +302,7 @@ nd* l_ins(nd *head)
     return head;
 }
 
-nd* c_ins(nd *head)
+nd* c_ins(nd *head, int node_count)
 {
     int i,val,indx;                             //  To Iterate, Store ValueI And Index
     nd *exc = head;                             //  To Exchange Address With Temp Node
@@ -316,7 +316,7 @@ nd* c_ins(nd *head)
     //  Checking -ve Index Condition
     if (indx<=0)
     {
-        printf("\nInvalid Index ! [ No Such Node ]\n");
+        printf("\nInvalid Index ! [ Out Of Bound ]\n");
         return head;
     }
 
@@ -325,6 +325,20 @@ nd* c_ins(nd *head)
     {
             //  Function To Insert Node At Index 1 
             head = f_ins(head);
+    }
+
+    //  Checking If Index Is Last Node
+    if (indx == (node_count+1))
+    {
+        head = l_ins(head);
+        return head;
+    }
+
+    //  Checking If Index Exceeds Node
+    if (indx > node_count)
+    {
+        printf("\nInvalid Index [ Out Of Bound ]\n");
+        return head;
     }
 
     //  Inserting Nodes in Between
@@ -394,7 +408,7 @@ nd* l_del(nd *head)
     return head;
 }
 
-nd* c_del(nd *head)
+nd* c_del(nd *head, int node_count)
 {
     int i, indx;
 
@@ -422,6 +436,13 @@ nd* c_del(nd *head)
     else if (indx == 1)
     {
         head = f_del(head);     //  Function To Delete First Node
+    }
+
+    //  If Index Exceeding Last Node 
+    else if (indx > node_count)
+    {
+        printf("\nInvalid Index ! [ Node Doesn't Exist ]\n");
+        return head;
     }
 
     //  If Index Is Out Of Bound
