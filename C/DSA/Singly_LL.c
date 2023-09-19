@@ -292,7 +292,12 @@ nd* c_ins(nd *head)
 
 nd* f_del(nd *head)
 {
+    nd *temp = head;
 
+    head = head->next;
+    free(temp);
+
+    return head;
 }
 
 nd* l_del(nd *head)
