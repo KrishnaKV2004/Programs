@@ -15,23 +15,24 @@ typedef struct Node
 
 //  Function Declaration-->
 
-nd* f_ins(nd*);     //  To Insert Node At First Position
-nd* c_ins(nd*);     //  To Insert Node At Custom Position
-nd* l_ins(nd*);     //  To Insert Node At Last Position
+nd* f_ins(nd*);         //  To Insert Node At First Position
+nd* c_ins(nd*);         //  To Insert Node At Custom Position
+nd* l_ins(nd*);         //  To Insert Node At Last Position
 
-nd* f_del(nd*);     //  To Delete First Node Of Linked List
-nd* c_del(nd*);     //  To Delete Node From Custom Position
-nd* l_del(nd*);     //  To Delete Last Node Of Linked List
+nd* f_del(nd*);         //  To Delete First Node Of Linked List
+nd* c_del(nd*);         //  To Delete Node From Custom Position
+nd* l_del(nd*);         //  To Delete Last Node Of Linked List
 
-void f_view(nd*);   //  To View Full Data In Linked List
-void c_view(nd*);   //  To View Specific Node Data In Linked List
+void f_view(nd*);       //  To View Full Data In Linked List
+void c_view(nd*);       //  To View Specific Node Data In Linked List
+void nd_cn(void);  //  To Display Number OfNodes In Linked List
 
 //  Main Function -->
 
 int main()
 {
     nd *head = NULL;         //  To Store Address Of First Node
-    int cus_nd;              //  To Store Position To Insert / Delete From
+    int node_count = 0;      //  To Count The Nodes In The Linked List
     char con, pos, choice;   //  To Input Choice, Continue And Position To Operate
 
     //  Menu For Operations -->
@@ -44,6 +45,7 @@ int main()
         printf("\n[I] To Insert Node");
         printf("\n[D] To Delete Node");
         printf("\n[V] To View Data");
+        printf("\n[N] To View Nodes");
         printf("\n\nChoose Operation ----> ");
         scanf(" %c", &choice);
 
@@ -74,6 +76,7 @@ int main()
 
                         //  Function To Insert Node At First Position
                         head = f_ins(head);
+                        node_count ++;
                         break;
 
                     //  To Insert At Last Position -->
@@ -83,6 +86,7 @@ int main()
 
                         //  Function To Insert Node At Last Position
                         head = l_ins(head);
+                        node_count ++;
                         break;
 
                     //  To Insert At Custom Position -->
@@ -92,6 +96,7 @@ int main()
 
                         //  Function To Insert Node At Specific Position
                         head = c_ins(head);
+                        node_count ++;
                         break;
 
                     default:
@@ -125,6 +130,7 @@ int main()
 
                         //  Function To Delete First Node
                         head = f_del(head);
+                        node_count --;
                         break;
 
                     case 'L' :
@@ -132,6 +138,7 @@ int main()
 
                         //  Function To Delete Last Node
                         head = l_del(head);
+                        node_count --;
                         break;
 
                     case 'C' :
@@ -139,6 +146,7 @@ int main()
 
                         //  Function To Delete Custom Node
                         head = c_del(head);
+                        node_count --;
                         break;
 
                     default:
@@ -158,7 +166,7 @@ int main()
 
                 printf("\nChoose Operation To View ---->\n");
                 printf("\n[A] To View All Data In Linked List");
-                printf("\n[N] To View Data Of Specific Node");
+                printf("\n[S] To View Data Of Specific Node");
                 printf("\n\nChoose Operation --> ");
                 scanf(" %c", &pos);
 
@@ -174,8 +182,8 @@ int main()
                         break;
 
                     //  To View Data At A Specific Node
-                    case 'N' :
-                    case 'n' :
+                    case 'S' :
+                    case 's' :
 
                         //  Function To View Data At Specific Node
                         c_view(head);
@@ -186,7 +194,16 @@ int main()
                         //  Message For Invalid Input Choice
                         printf("\nInvalid Operation !\n");
                         break;
-                }    
+                }
+                break;
+
+            //  To View Number Of Nodes -->
+
+            case 'N' :
+            case 'n' :
+
+                //  Function To Display Number Of Nodes
+                nd_cn();
                 break;
 
             default :
@@ -437,6 +454,11 @@ void f_view(nd *head)
 }
 
 void c_view(nd *head)
+{
+
+}
+
+void nd_cn()
 {
 
 }
