@@ -1,4 +1,4 @@
- //  Implementation Of Singly Linked List
+//  Implementation Of Singly Linked List
 
 //  Header Files -->
 
@@ -287,11 +287,53 @@ nd* l_ins(nd *head)
 
 nd* c_ins(nd *head)
 {
+    int i,val,indx;
+    nd *exc = head;
+    nd *temp = head->next;
+    nd *new_node = (nd *)malloc(sizeof(nd));
 
+    printf("\nEnter Place To Insert Node --> ");
+    scanf("%d", &indx);
+
+    if (indx<=0)
+    {
+        printf("\nInvalid Index ! [ No Such Node ]\n");
+        return head;
+    }
+
+    if (indx == 1)
+    {
+            head = f_ins(head);
+    }
+
+    else
+    {
+        printf("\nEnter Data --> ");
+        scanf("%d", &val);
+
+        for (i=1; i<indx-1; i++)
+        {
+            temp = temp->next;
+            exc = exc->next;
+        }
+
+        new_node->data = val;
+        new_node->next = exc->next;
+        exc->next = new_node;
+    }
+
+    return head;
 }
 
 nd* f_del(nd *head)
 {
+    //  Checking If List Is Empty
+    if (head == NULL)
+    {
+        printf("\nLinked List Is Empty\n");
+        return head;
+    }
+
     nd *temp = head;        //  Temp Pointer To Traverse
 
     //  Updating Head With Next Node And Deleting Temp
@@ -303,27 +345,83 @@ nd* f_del(nd *head)
 
 nd* l_del(nd *head)
 {
+    //  Checking If Linked List Is Empty
+    if (head == NULL)
+    {
+        printf("\nLinked List Is Empty\n");
+        return head;
+    }
+
     nd *temp = head;        //  Temp Pointer To Traverse
-    nd *fr = head->next;    //  Fr Pointer Pointing Next Node Of Temp
+    nd *exc = head->next;    //  Fr Pointer Pointing Next Node Of Temp
 
     //  Traversing Fr To Last Node
-    while (fr->next != NULL)
+    while (exc->next != NULL)
     {
         //  Updating Temp And Fr To Last Node
         temp = temp->next;
-        fr = fr->next;
+        exc = exc->next;
     }
 
     //  Assigning NULL To Second Last Node And Deleting Last Node
     temp->next = NULL;
-    free(fr);
+    free(exc);
 
     return head;
 }
 
 nd* c_del(nd *head)
 {
-    
+    int i, indx;
+
+    //  Checking If Linked List Is Empty
+    if (head == NULL)
+    {
+        printf("\nLinked List Is Empty\n");
+        return head;
+    }
+
+    nd *exc = head;
+    nd *temp = head->next;
+
+    printf("\nNode To Delete ? --> ");      //  Input Node To Delete
+    scanf("%d", &indx);                     //  Store Input In Variable
+
+    //  If Index Is Zero
+    if (indx<=0)
+    {
+        printf("\nInvalid Index ! [ No Such Node ]\n");
+        return head;
+    }
+
+    //  If Index Is 1
+    else if (indx == 1)
+    {
+        head = f_del(head);     //  Function To Delete First Node
+    }
+
+    //  If Index Is Out Of Bound
+    else if (temp == NULL || temp->next == NULL)
+    {
+        printf("\nInvalid Index ! [ Out Of Bound ]\n");
+        return head;
+    }
+
+    else
+    {
+        for (i=1; i<indx-1; i++)
+        {
+            //  Traversing To The Specific Index
+            temp = temp->next;
+            exc = exc->next;
+        }
+
+        //  Updating Node Address And Deleting Node
+        exc->next = temp->next;
+        free(temp);
+    }
+
+    return head;
 }
 
 void f_view(nd *head)
