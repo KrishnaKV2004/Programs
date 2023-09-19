@@ -455,7 +455,18 @@ void f_view(nd *head)
 
 void c_view(nd *head)
 {
+    int i, indx;
+    nd *temp = head;
 
+    printf("\nEnter Index To View Node Data --> ");
+    scanf("%d", &indx);
+
+    for (i=1; i<indx; i++)
+    {
+        temp = temp->next;
+    }
+
+    printf("\nData --> %d\n", temp->data);
 }
 
 void nd_cn(int node_count)
