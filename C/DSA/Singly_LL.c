@@ -243,7 +243,7 @@ nd* f_ins(nd *head)
 nd* l_ins(nd *head)
 {
     int val;    //  To Store Data Value
-    nd *temp;   //  Temp Variable To Traverse To The Last Node
+    nd *temp = head;   //  Temp Variable To Traverse To The Last Node
     nd *new_node = (nd *)malloc(sizeof(nd));    //  New Node Allocation
 
     //  Checking If Memory Is Allocated
@@ -270,8 +270,6 @@ nd* l_ins(nd *head)
     //  If Nodes Exists Already
     else
     {
-        temp = head;
-
         //  Traversing To The Last Node
         while (temp->next != NULL)
         {
@@ -299,7 +297,19 @@ nd* f_del(nd *head)
 
 nd* l_del(nd *head)
 {
+    nd *temp = head;
+    nd *fr = head->next;
 
+    while (fr->next != NULL)
+    {
+        temp = temp->next;
+        fr = fr->next;
+    }
+
+    temp->next = NULL;
+    free(fr);
+
+    return head;
 }
 
 nd* c_del(nd *head)
