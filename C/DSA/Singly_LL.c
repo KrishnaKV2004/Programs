@@ -25,7 +25,7 @@ nd* l_del(nd*);         //  To Delete Last Node Of Linked List
 
 void f_view(nd*);       //  To View Full Data In Linked List
 void c_view(nd*);       //  To View Specific Node Data In Linked List
-void nd_cn(void);  //  To Display Number OfNodes In Linked List
+void nd_cn(int);  //  To Display Number OfNodes In Linked List
 
 //  Main Function -->
 
@@ -203,7 +203,7 @@ int main()
             case 'n' :
 
                 //  Function To Display Number Of Nodes
-                nd_cn();
+                nd_cn(node_count);
                 break;
 
             default :
@@ -458,7 +458,8 @@ void c_view(nd *head)
 
 }
 
-void nd_cn()
+void nd_cn(int node_count)
 {
-
+    //  Display Number Of Nodes
+    printf("\nNodes --> %d\n", node_count);
 }
