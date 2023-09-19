@@ -23,16 +23,16 @@ nd* f_del(nd*);     //  To Delete First Node Of Linked List
 nd* c_del(nd*);     //  To Delete Node From Custom Position
 nd* l_del(nd*);     //  To Delete Last Node Of Linked List
 
-void f_view(nd*);    //  To View Full Data In Linked List
-void c_view(nd*);    //  To View Specific Node Data In Linked List
+void f_view(nd*);   //  To View Full Data In Linked List
+void c_view(nd*);   //  To View Specific Node Data In Linked List
 
 //  Main Function -->
 
 int main()
 {
-    nd *head = NULL;   //  To Store Address Of First Node
-    int cus_nd;        //  To Store Position To Insert / Delete From
-    char con, pos, choice;   //  To Input Operation Choice And Continue / End And Position To Insert / Delete
+    nd *head = NULL;         //  To Store Address Of First Node
+    int cus_nd;              //  To Store Position To Insert / Delete From
+    char con, pos, choice;   //  To Input Choice, Continue And Position To Operate
 
     //  Menu For Operations -->
 
