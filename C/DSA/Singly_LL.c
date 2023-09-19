@@ -304,25 +304,30 @@ nd* l_ins(nd *head)
 
 nd* c_ins(nd *head)
 {
-    int i,val,indx;
-    nd *exc = head;
-    nd *temp = head->next;
-    nd *new_node = (nd *)malloc(sizeof(nd));
+    int i,val,indx;                             //  To Iterate, Store ValueI And Index
+    nd *exc = head;                             //  To Exchange Address With Temp Node
+    nd *temp = head->next;                      //  To Traverse To Specific Node
+    nd *new_node = (nd *)malloc(sizeof(nd));    //  New node To Insert
 
+    //  Input Index To Insert Node
     printf("\nEnter Place To Insert Node --> ");
     scanf("%d", &indx);
 
+    //  Checking -ve Index Condition
     if (indx<=0)
     {
         printf("\nInvalid Index ! [ No Such Node ]\n");
         return head;
     }
 
+    //  Checking First Node Condition
     if (indx == 1)
     {
+            //  Function To Insert Node At Index 1 
             head = f_ins(head);
     }
 
+    //  Inserting Nodes in Between
     else
     {
         printf("\nEnter Data --> ");
@@ -330,10 +335,12 @@ nd* c_ins(nd *head)
 
         for (i=1; i<indx-1; i++)
         {
+            //  Traversing To Specified Node
             temp = temp->next;
             exc = exc->next;
         }
 
+        //  Updating Address Of Node
         new_node->data = val;
         new_node->next = exc->next;
         exc->next = new_node;
@@ -455,17 +462,19 @@ void f_view(nd *head)
 
 void c_view(nd *head)
 {
-    int i, indx;
-    nd *temp = head;
+    int i, indx;        //  To Iterate And Store Index
+    nd *temp = head;    //  To Traverse To Specific Node
 
     printf("\nEnter Index To View Node Data --> ");
     scanf("%d", &indx);
 
     for (i=1; i<indx; i++)
     {
+        //  Traverse To Specified Node
         temp = temp->next;
     }
 
+    //  Printing Data At Specified Node
     printf("\nData --> %d\n", temp->data);
 }
 
