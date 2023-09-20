@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 //  Node Structure To Store Data + Address-->
 
@@ -37,10 +38,11 @@ int main()
 
     //  Menu For Operations -->
 
-    printf("\n# -------- Linked List -------- #\n");
 
     menu :
 
+        system("cls");
+        printf("\n# -------- Linked List -------- #\n");
         printf("\nOperations ---->\n");
         printf("\n[I] To Insert Node");
         printf("\n[D] To Delete Node");
@@ -59,7 +61,7 @@ int main()
             case 'i' :
 
                 //  Checking Further Possibilities -->
-
+                system("cls");
                 printf("\nChoose Place To Insert ---->\n");
                 printf("\n[F] To Insert At First Position");
                 printf("\n[L] To Insert At Last Position");
@@ -114,6 +116,7 @@ int main()
 
                 //  Checking Further Possibilities -->
 
+                system("cls");
                 printf("\nChoose Place To Delete ---->\n");
                 printf("\n[F] To Delete First Node");
                 printf("\n[L] To Delete Last Node");
@@ -164,6 +167,7 @@ int main()
 
                 //  Checking For Further Viewing Possibilities -->
 
+                system("cls");
                 printf("\nChoose Operation To View ---->\n");
                 printf("\n[A] To View All Data In Linked List");
                 printf("\n[S] To View Data Of Specific Node");
