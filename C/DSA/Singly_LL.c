@@ -24,8 +24,11 @@ nd* f_del(nd*);             //  To Delete First Node Of Linked List
 nd* l_del(nd*);             //  To Delete Last Node Of Linked List
 nd* c_del(nd*, int);        //  To Delete Node From Custom Position
 
+nd * rev(nd *);             //  To Reverse The Linked List
+
 void f_view(nd*);           //  To View Full Data In Linked List
-void c_view(nd*);           //  To View Specific Node Data In Linked List
+void c_view(nd*, int);      //  To View Specific Node Data In Linked List
+
 void nd_cn(int);            //  To Display Number OfNodes In Linked List
 
 //  Main Function -->
@@ -38,7 +41,6 @@ int main()
 
     //  Menu For Operations -->
 
-
     menu :
 
         system("cls");
@@ -48,6 +50,7 @@ int main()
         printf("\n[D] To Delete Node");
         printf("\n[V] To View Data");
         printf("\n[N] To View Nodes");
+        printf("\n[R] To Reverse The List");
         printf("\n\nChoose Operation ----> ");
         scanf(" %c", &choice);
 
@@ -66,13 +69,11 @@ int main()
                 printf("\n[F] To Insert At First Position");
                 printf("\n[L] To Insert At Last Position");
                 printf("\n[C] To Insert At Custom Position");
-                printf("\n\nChoose Operation --> ");
+                printf("\n\nChoose Operation ----> ");
                 scanf(" %c", &pos);
 
                 switch (pos)
                 {
-                    //  To Insert At First Position -->
-
                     case 'F' :
                     case 'f' :
 
@@ -81,8 +82,6 @@ int main()
                         node_count ++;
                         break;
 
-                    //  To Insert At Last Position -->
-
                     case 'L' :
                     case 'l' :
 
@@ -90,8 +89,6 @@ int main()
                         head = l_ins(head);
                         node_count ++;
                         break;
-
-                    //  To Insert At Custom Position -->
 
                     case 'C' :
                     case 'c' :
@@ -109,8 +106,6 @@ int main()
                 }
                 break;
 
-            //  To Delete -->
-
             case 'D' :
             case 'd' :
 
@@ -121,13 +116,11 @@ int main()
                 printf("\n[F] To Delete First Node");
                 printf("\n[L] To Delete Last Node");
                 printf("\n[C] To Delete Custom Node");
-                printf("\n\nChoose Operation --> ");
+                printf("\n\nChoose Operation ----> ");
                 scanf(" %c", &pos);
 
                 switch (pos)
                 {
-                    //  To Delete First Node -->
-
                     case 'F' :
                     case 'f' :
 
@@ -160,8 +153,6 @@ int main()
                 }
                 break;
 
-            //  To View Data Of Linked List -->
-
             case 'V' :
             case 'v' :
 
@@ -171,13 +162,11 @@ int main()
                 printf("\nChoose Operation To View ---->\n");
                 printf("\n[A] To View All Data In Linked List");
                 printf("\n[S] To View Data Of Specific Node");
-                printf("\n\nChoose Operation --> ");
+                printf("\n\nChoose Operation ----> ");
                 scanf(" %c", &pos);
 
                 switch (pos)
                 {
-                    //  To View Entire Linked List -->
-
                     case 'A' :
                     case 'a' :
 
@@ -185,12 +174,11 @@ int main()
                         f_view(head);
                         break;
 
-                    //  To View Data At A Specific Node
                     case 'S' :
                     case 's' :
 
                         //  Function To View Data At Specific Node
-                        c_view(head);
+                        c_view(head, node_count);
                         break;
 
                     default :
@@ -201,13 +189,18 @@ int main()
                 }
                 break;
 
-            //  To View Number Of Nodes -->
-
             case 'N' :
             case 'n' :
 
                 //  Function To Display Number Of Nodes
                 nd_cn(node_count);
+                break;
+
+            case 'R' :
+            case 'r' :
+
+                //  Function To Reverse The Linked List
+                head = rev(head);
                 break;
 
             default :
@@ -238,7 +231,7 @@ int main()
 
 nd* f_ins(nd *head)
 {
-    int val;    //  To Store Data Value
+    int val;                                    //  To Store Data Value
     nd *new_node = (nd *)malloc(sizeof(nd));    //  New Node Allocation
 
     //  Checking If Memory Is Allocated
@@ -308,7 +301,7 @@ nd* l_ins(nd *head)
 
 nd* c_ins(nd *head, int node_count)
 {
-    int i,val,indx;                             //  To Iterate, Store ValueI And Index
+    int i,val,indx;                             //  To Iterate, Store Value And Index
     nd *exc = head;                             //  To Exchange Address With Temp Node
     nd *temp = head->next;                      //  To Traverse To Specific Node
     nd *new_node = (nd *)malloc(sizeof(nd));    //  New node To Insert
@@ -394,7 +387,7 @@ nd* l_del(nd *head)
         return head;
     }
 
-    nd *temp = head;        //  Temp Pointer To Traverse
+    nd *temp = head;         //  Temp Pointer To Traverse
     nd *exc = head->next;    //  Fr Pointer Pointing Next Node Of Temp
 
     //  Traversing Fr To Last Node
@@ -414,7 +407,7 @@ nd* l_del(nd *head)
 
 nd* c_del(nd *head, int node_count)
 {
-    int i, indx;
+    int i, indx;    //  To Iterate And Store Index
 
     //  Checking If Linked List Is Empty
     if (head == NULL)
@@ -473,6 +466,35 @@ nd* c_del(nd *head, int node_count)
     return head;
 }
 
+nd * rev(nd *head)
+{
+    //  Checking If List Is Empty
+    if (head == NULL)
+    {
+        printf("\nNo Nodes To Reverse !\n");
+        return head;
+    }
+    //  To Point To Different Nodes To Exchange
+    nd *prev,*curr,*nxt;
+    prev=NULL;              
+    curr=nxt=head;
+
+    while(nxt!=NULL)
+    {
+            //  Traversing The List
+            nxt=nxt->next;
+            curr->next=prev;
+            prev=curr;
+            curr=nxt;
+    }
+
+    //  Assigning Head
+    head=prev;
+
+    printf("\nLinked List Reversed Successfully !\n");
+    return head;
+}
+
 void f_view(nd *head)
 {
     while (head != NULL)
@@ -485,13 +507,19 @@ void f_view(nd *head)
     printf("\n");
 }
 
-void c_view(nd *head)
+void c_view(nd *head, int node_count)
 {
     int i, indx;        //  To Iterate And Store Index
     nd *temp = head;    //  To Traverse To Specific Node
 
     printf("\nEnter Index To View Node Data --> ");
     scanf("%d", &indx);
+
+    if (indx<=0 || indx>node_count)
+    {
+        printf("\nInvalid Node !\n");
+        return;
+    }
 
     for (i=1; i<indx; i++)
     {
