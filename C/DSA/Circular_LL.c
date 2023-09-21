@@ -1,21 +1,34 @@
+//  Circular Linked :List ---->
+
+//  Header Files -->
+
 #include <stdio.h>
 #include <stdlib.h>
 
+//  Node Structure -->
 typedef struct Node {
     int data;
     struct Node* next;
 } nd;
 
+//  Function Declaration -->
+
 nd* f_ins(nd*);
 nd* l_ins(nd*);
 nd* c_ins(nd*, int);
+
 nd* f_del(nd*);
 nd* l_del(nd*);
 nd* c_del(nd*, int);
-nd* rev(nd*);
+
 void f_view(nd*);
 void c_view(nd*, int);
+
+nd* rev(nd*);
+
 void nd_cn(int);
+
+//  Main Function -->
 
 int main() {
     nd* head = NULL;
