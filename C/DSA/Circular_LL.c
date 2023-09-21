@@ -59,19 +59,23 @@ int main() {
             printf("\n\nChoose Operation ----> ");
             scanf(" %c", &pos);
 
-            switch (pos) {
+            switch (pos)
+            {
                 case 'F':
                 case 'f':
                     head = f_ins(head, &node_count);
                     break;
+
                 case 'L':
                 case 'l':
                     head = l_ins(head, &node_count);
                     break;
+
                 case 'C':
                 case 'c':
                     head = c_ins(head, &node_count);
                     break;
+
                 default:
                     printf("\nInvalid Operation !\n");
                     break;
@@ -88,19 +92,23 @@ int main() {
             printf("\n\nChoose Operation ----> ");
             scanf(" %c", &pos);
 
-            switch (pos) {
+            switch (pos)
+            {
                 case 'F':
                 case 'f':
                     head = f_del(head, &node_count);
                     break;
+
                 case 'L':
                 case 'l':
                     head = l_del(head, &node_count);
                     break;
+
                 case 'C':
                 case 'c':
                     head = c_del(head, &node_count);
                     break;
+
                 default:
                     printf("\nInvalid Operation !\n");
                     break;
@@ -116,15 +124,18 @@ int main() {
             printf("\n\nChoose Operation ----> ");
             scanf(" %c", &pos);
 
-            switch (pos) {
+            switch (pos)
+            {
                 case 'A':
                 case 'a':
                     f_view(head);
                     break;
+
                 case 'S':
                 case 's':
                     c_view(head);
                     break;
+
                 default:
                     printf("\nInvalid Operation !\n");
                     break;
@@ -149,52 +160,72 @@ int main() {
     printf("\nContinue Operation ? [Y/N] --> ");
     scanf(" %c", &con);
 
-    if (con == 'Y' || con == 'y') {
+    if (con == 'Y' || con == 'y')
+    {
         goto menu;
-    } else {
+    }
+    else
+    {
         exit(0);
     }
 
     return 0;
 }
 
-nd* f_ins(nd* head, int* node_count) {
+nd* f_ins(nd* head, int* node_count)
+{
     int val;
     nd* new_node = (nd*)malloc(sizeof(nd));
-    if (new_node == NULL) {
+
+    if (new_node == NULL)
+    {
         printf("\nSorry ! Memory Not Allocated\n");
         return head;
     }
+
     printf("\nEnter Data --> ");
     scanf("%d", &val);
 
     new_node->data = val;
-    if (head == NULL) {
+
+    if (head == NULL)
+    {
         new_node->next = new_node; // Point to itself in a circular list
-    } else {
+    }
+    else
+    {
         new_node->next = head->next;
         head->next = new_node;
     }
+
     *node_count += 1;
     return new_node;
 }
 
-nd* l_ins(nd* head, int* node_count) {
+nd* l_ins(nd* head, int* node_count)
+{
     int val;
     nd* new_node = (nd*)malloc(sizeof(nd));
-    if (new_node == NULL) {
+
+    if (new_node == NULL)
+    {
         printf("\nSorry ! Memory Not Allocated\n");
         return head;
     }
+
     printf("\nEnter Data --> ");
     scanf("%d", &val);
 
     new_node->data = val;
-    if (head == NULL) {
+
+    if (head == NULL)
+    {
         new_node->next = new_node;
         *node_count += 1;
         return new_node;
-    } else {
+    }
+    else
+    {
         new_node->next = head->next;
         head->next = new_node;
         *node_count += 1;
@@ -202,7 +233,8 @@ nd* l_ins(nd* head, int* node_count) {
     }
 }
 
-nd* c_ins(nd* head, int* node_count) {
+nd* c_ins(nd* head, int* node_count)
+{
     int i, val, indx;
     nd* temp = head;
     nd* new_node = (nd*)malloc(sizeof(nd));
@@ -210,23 +242,27 @@ nd* c_ins(nd* head, int* node_count) {
     printf("\nEnter Place To Insert Node --> ");
     scanf("%d", &indx);
 
-    if (indx <= 0 || indx > *node_count + 1) {
+    if (indx <= 0 || indx > *node_count + 1)
+    {
         printf("\nInvalid Index ! [ Out Of Bound ]\n");
         return head;
     }
 
-    if (indx == 1) {
+    if (indx == 1)
+    {
         return f_ins(head, node_count);
     }
 
-    if (indx == *node_count + 1) {
+    if (indx == *node_count + 1)
+    {
         return l_ins(head, node_count);
     }
 
     printf("\nEnter Data --> ");
     scanf("%d", &val);
 
-    for (i = 1; i < indx - 1; i++) {
+    for (i = 1; i < indx - 1; i++)
+    {
         temp = temp->next;
     }
 
@@ -238,15 +274,18 @@ nd* c_ins(nd* head, int* node_count) {
     return head;
 }
 
-nd* f_del(nd* head, int* node_count) {
-    if (head == NULL) {
+nd* f_del(nd* head, int* node_count)
+{
+    if (head == NULL)
+    {
         printf("\nLinked List Is Empty\n");
         return head;
     }
 
     nd* temp = head->next;
 
-    if (temp == head) {
+    if (temp == head)
+    {
         free(head);
         *node_count -= 1;
         return NULL;
@@ -255,11 +294,14 @@ nd* f_del(nd* head, int* node_count) {
     head->next = temp->next;
     free(temp);
     *node_count -= 1;
+
     return head;
 }
 
-nd* l_del(nd* head, int* node_count) {
-    if (head == NULL) {
+nd* l_del(nd* head, int* node_count)
+{
+    if (head == NULL)
+    {
         printf("\nLinked List Is Empty\n");
         return head;
     }
@@ -268,14 +310,16 @@ nd* l_del(nd* head, int* node_count) {
     nd* prev = NULL;
 
     // Traverse to the last node while keeping track of the previous node
-    while (temp->next != head) {
+    while (temp->next != head)
+    {
         prev = temp;
         temp = temp->next;
     }
 
     // Now 'temp' points to the last node, and 'prev' points to the second last node
 
-    if (prev == NULL) {
+    if (prev == NULL)
+    {
         // There is only one node in the list
         free(temp);
         *node_count -= 1;
@@ -292,10 +336,12 @@ nd* l_del(nd* head, int* node_count) {
     return head;
 }
 
-nd* c_del(nd* head, int* node_count) {
+nd* c_del(nd* head, int* node_count)
+{
     int i, indx;
 
-    if (head == NULL) {
+    if (head == NULL)
+    {
         printf("\nLinked List Is Empty\n");
         return head;
     }
@@ -306,22 +352,24 @@ nd* c_del(nd* head, int* node_count) {
     printf("\nNode To Delete ? --> ");
     scanf("%d", &indx);
 
-    if (indx <= 0 || indx > *node_count) {
+    if (indx <= 0 || indx > *node_count)
+    {
         printf("\nInvalid Index ! [ Node Doesn't Exist ]\n");
         return head;
     }
 
-    if (indx == 1) {
+    if (indx == 1)
+    {
         return f_del(head, node_count);
     }
 
-    for (i = 1; i < indx; i++) {
+    for (i = 1; i < indx; i++)
+    {
         prev = temp;
         temp = temp->next;
     }
 
     // 'temp' points to the node to be deleted, and 'prev' points to the previous node
-
     prev->next = temp->next;
     free(temp);
 
@@ -329,12 +377,15 @@ nd* c_del(nd* head, int* node_count) {
     return head;
 }
 
-void nd_cn(int node_count) {
+void nd_cn(int node_count)
+{
     printf("\nNodes --> %d\n", node_count);
 }
 
-nd* rev(nd* head) {
-    if (head == NULL) {
+nd* rev(nd* head)
+{
+    if (head == NULL)
+    {
         printf("\nNo Nodes To Reverse!\n");
         return head;
     }
@@ -343,7 +394,8 @@ nd* rev(nd* head) {
     nd* prev = NULL;
     nd* next_node = NULL;
 
-    do {
+    do
+    {
         next_node = current->next;
         current->next = prev;
         prev = current;
