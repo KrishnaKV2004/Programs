@@ -1,13 +1,19 @@
 //  Queue ---->
 
+//  Header Files ---->
+
 #include <stdio.h>
 
-#define MAX 10
+#define MAX 10      //  Macro
+
+//  Function Declaration ---->
 
 int Enq(int [], int, int);
 int Deq(int [], int, int);
 void Disp(int [], int, int);
 void Peek(int [], int);
+
+//  Main Function ---->
 
 int main()
 {
@@ -57,6 +63,8 @@ int main()
 
     } while (con == 'Y' || con == 'y');
 }
+
+//  Function Definition ---->
 
 int Enq(int Queue[], int Front, int Rear)
 {
