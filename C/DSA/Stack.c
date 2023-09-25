@@ -1,13 +1,18 @@
 //  Stack ---->
 
+//  Header Files ---->
 #include <stdio.h>
 
-# define MAX 10
+# define MAX 10     //  Macro
+
+//  Function Declaration ---->
 
 void Push(int [], int *);
 void Pop(int [], int *);
 void Disp(int [], int);
 void Peek(int [], int);
+
+//  Main Function ---->
 
 void main()
 {
@@ -55,6 +60,8 @@ void main()
         goto menu;
     }
 }
+
+//  Function Defintion ---->
 
 void Push(int Stack[], int *Top)
 {
