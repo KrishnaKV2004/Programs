@@ -13,24 +13,25 @@ typedef struct Node {
 
 //  Function Declaration -->
 
-nd* f_ins(nd*);
-nd* l_ins(nd*);
-nd* c_ins(nd*, int);
+nd* f_ins(nd*);             //  Function To Insert At Node First Place
+nd* l_ins(nd*);             //  Function To Insert At Node Last Place
+nd* c_ins(nd*, int);        //  Function To Insert Node At Custom Place
 
-nd* f_del(nd*);
-nd* l_del(nd*);
-nd* c_del(nd*, int);
+nd* f_del(nd*);             //  Function To Delete First Node
+nd* l_del(nd*);             //  Function To Delete Last Node
+nd* c_del(nd*, int);        //  Function To Delete Custom Node
 
-void f_view(nd*);
-void c_view(nd*, int);
+void f_view(nd*);           //  Function To View Data In Linked List
+void c_view(nd*, int);      //  Function To View Data In Specific Node
 
-nd* rev(nd*);
+nd* rev(nd*);               //  Function To Reverse The Data In Linked List
 
-void nd_cn(int);
+void nd_cn(int);            //  Function To Count The Nodes In Linked List
 
 //  Main Function -->
 
-int main() {
+int main()
+{
     nd* head = NULL;
     int node_count = 0;
     char con, pos, choice;
@@ -171,6 +172,8 @@ int main() {
 
     return 0;
 }
+
+//  Function Definition ---->
 
 nd* f_ins(nd* head, int* node_count)
 {
