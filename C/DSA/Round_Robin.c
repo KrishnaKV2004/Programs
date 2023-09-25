@@ -1,8 +1,11 @@
 //  Round Robin CPU Scheduling ---->
 
+//  Header Files ---->
+
 #include <stdio.h>
 #include <stdlib.h>
 
+//  Node Structure ---->
 struct Process {
     int process_id;
     int burst_time;
@@ -10,6 +13,8 @@ struct Process {
 };
 
 typedef struct Process Process;
+
+//  Function Declaration ---->
 
 void enqueue(Process** rear, int process_id, int burst_time) {
     Process* new_process = (Process*)malloc(sizeof(Process));
@@ -74,6 +79,8 @@ void roundRobin(Process* rear, int time_quantum) {
         }
     }
 }
+
+//  Main Function ---->
 
 int main() {
     Process* rear = NULL;
