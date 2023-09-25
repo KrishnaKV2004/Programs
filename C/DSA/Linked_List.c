@@ -1,14 +1,22 @@
+//  Linked List ---->
+
 #include <stdio.h>
 #include <stdlib.h>
+
+//  Node Structure ---->
 typedef struct list
 {
     int data;
     struct list *next;
 } ls;
 
+//  Function Declaration ---->
+
 ls* insert(ls *head);
 ls* delete(ls *head);
 void view(ls *head);
+
+//  Main Function ---->
 
 int main()
 {
@@ -59,6 +67,8 @@ menu:
 
     return 0;
 }
+
+//  Function Definition ---->
 
 ls* insert(ls *head)
 {
