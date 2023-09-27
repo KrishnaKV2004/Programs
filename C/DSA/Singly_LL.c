@@ -29,7 +29,7 @@ nd * rev(nd *);             //  To Reverse The Linked List
 void f_view(nd*);           //  To View Full Data In Linked List
 void c_view(nd*, int);      //  To View Specific Node Data In Linked List
 
-void nd_cn(int);            //  To Display Number OfNodes In Linked List
+void nd_cn(int);            //  To Display Number Of Nodes In Linked List
 
 //  Main Function -->
 
