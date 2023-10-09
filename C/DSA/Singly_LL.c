@@ -466,7 +466,7 @@ nd* c_del(nd *head, int node_count)
     return head;
 }
 
-nd * rev(nd *head)
+nd* rev(nd *head)
 {
     //  Checking If List Is Empty
     if (head == NULL)
