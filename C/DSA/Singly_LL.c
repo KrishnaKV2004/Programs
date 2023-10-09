@@ -497,6 +497,13 @@ nd * rev(nd *head)
 
 void f_view(nd *head)
 {
+    //  Checking If Linked List Is Empty
+    if (head == NULL)
+    {
+        printf("\nLinked List Is Empty !\n");
+        return;
+    }
+
     while (head != NULL)
     {
         //  Traversing Linked List And Printing Data
@@ -511,6 +518,13 @@ void c_view(nd *head, int node_count)
 {
     int i, indx;        //  To Iterate And Store Index
     nd *temp = head;    //  To Traverse To Specific Node
+
+    //  Checking If Linked List Is Empty
+    if (head == NULL)
+    {
+        printf("\nLinked List Is Empty !\n");
+        return;
+    }
 
     printf("\nEnter Index To View Node Data --> ");
     scanf("%d", &indx);
