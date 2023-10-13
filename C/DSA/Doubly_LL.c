@@ -1,5 +1,10 @@
+//  Implementation Of Doubly Linked List ---->
+
+//  Header Files -->
 #include <stdio.h>
 #include <stdlib.h>
+
+//  Structure Of Node -->
 
 typedef struct Node
 {
@@ -8,26 +13,33 @@ typedef struct Node
     struct Node *next;
 } nd;
 
-nd* f_ins(nd **head, nd **tail);
-nd* l_ins(nd **head, nd **tail);
-nd* c_ins(nd **head, nd **tail);
+//  Function Declaration -->
 
-nd* f_del(nd **head, nd **tail);
-nd* l_del(nd **head, nd **tail);
-nd* c_del(nd **head, nd **tail);
+nd* f_ins(nd **head, nd **tail);            //  To Insert Node At First Position
+nd* l_ins(nd **head, nd **tail);            //  To Insert Node At Last Position
+nd* c_ins(nd **head, nd **tail);            //  To Insert Node At Custom Position
 
-nd *rev(nd *head);
+nd* f_del(nd **head, nd **tail);            //  To Delete First Node
+nd* l_del(nd **head, nd **tail);            //  To Delete Last Node
+nd* c_del(nd **head, nd **tail);            //  To Delete Custom Node
 
-void f_view(nd *head);
-void c_view(nd *head, int node_count);
+nd *rev(nd *head);                          //  To Reverse The Linked List
 
-void nd_cn(int node_count);
+void f_view(nd *head);                      //  To View Data In Linked List
+void c_view(nd *head, int node_count);      //  To View Data At Custom Nodes
+
+void nd_cn(int node_count);                 //  To Count Nodes In Linked List
+
+//  Main Function -->
 
 int main()
 {
-    nd *head = NULL;
+    nd *head = NULL;        //  To Point At First Node
+    nd *tail = NULL;        //  To Point At Last Node
     int node_count = 0;
     char con, pos, choice;
+
+    //  Menu To Give Choice Of Operations -->
 
     menu:
         system("cls");
@@ -40,6 +52,8 @@ int main()
         printf("\n[R] To Reverse The List");
         printf("\n\nChoose Operation ----> ");
         scanf(" %c", &choice);
+
+        //  Function Calls Based On Desired Operation -->
 
         switch (choice)
         {
@@ -151,6 +165,8 @@ int main()
                 break;
         }
 
+        //  To Ask User If He Wish To Continue -->
+        
         printf("\nContinue Operation ? [Y/N] --> ");
         scanf(" %c", &con);
 
@@ -165,6 +181,8 @@ int main()
 
     return 0;
 }
+
+//  Function Definition -->
 
 nd* f_ins(nd **head, nd **tail)
 {
