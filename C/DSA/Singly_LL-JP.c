@@ -14,7 +14,7 @@ typedef struct Node
     struct Node * next;     //  次のノードのアドレスを格納するための自己参照ポインタ
 } nd;
 
-//  Function Declaration-->
+//  関数の宣言 -->
 
 nd* f_ins(nd*);             //  最初の位置にノードを挿入するには
 nd* l_ins(nd*);             //  ノードを最後の位置に挿入するには
@@ -31,7 +31,7 @@ void c_view(nd*, int);      //  リンクされたリストで特定のノード
 
 void nd_cn(int);            //  リンクされたリストのノード数を表示するには
 
-//  Main Function -->
+//  メイン機能 -->
 
 int main()
 {
