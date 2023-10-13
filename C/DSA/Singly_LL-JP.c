@@ -307,7 +307,7 @@ nd* c_ins(nd *head, int node_count)
     nd *new_node = (nd *)malloc(sizeof(nd));    //  挿入する新しいノード
 
     //  ノードを挿入するための入力インデックス
-    printf("\nノードを挿入する場所を入力してください --> ");
+    printf("\n ノードを挿入する場所を入力してください --> ");
     scanf("%d", &indx);
 
     //  -ve インデックス条件の確認
@@ -419,7 +419,7 @@ nd* c_del(nd *head, int node_count)
     nd *exc = head;
     nd *temp = head->next;
 
-    printf("\n削除するノード? --> ");      //  削除する入力ノード
+    printf("\n削除する ノード? --> ");      //  削除する入力ノード
     scanf("%d", &indx);                  //  入力を変数に保存
 
     //  インデックスがゼロの場合
@@ -471,7 +471,7 @@ nd* rev(nd *head)
     //  リストが空かどうかを確認する
     if (head == NULL)
     {
-        printf("\n逆にできるノードはありません !\n");
+        printf("\n逆にできる ノードはありません !\n");
         return head;
     }
     //  交換する異なるノードをポイントするには
@@ -526,12 +526,12 @@ void c_view(nd *head, int node_count)
         return;
     }
 
-    printf("\nインデックスを入力してノード データを表示 --> ");
+    printf("\nインデックスを入力して ノード データを表示 --> ");
     scanf("%d", &indx);
 
     if (indx<=0 || indx>node_count)
     {
-        printf("\n無効なノードです !\n");
+        printf("\n無効な ノードです !\n");
         return;
     }
 
@@ -548,5 +548,5 @@ void c_view(nd *head, int node_count)
 void nd_cn(int node_count)
 {
     //  ノード数の表示
-    printf("\nノード --> %d\n", node_count);
+    printf("\n ノード --> %d\n", node_count);
 }
