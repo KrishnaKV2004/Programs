@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <unistd.h>
 
 //  데이터 및 주소를 저장하는 노드 구조체 -->
 
@@ -148,6 +149,8 @@ int main()
 
                     //  잘못된 입력 선택에 대한 메시지
                     printf("\n잘못된 작업 !\n");
+                    sleep(2);
+                    goto menu;
                     break;
             }
             break;
@@ -219,6 +222,8 @@ int main()
     }
     else
     {
+        printf("\n감사합니다\n");
+        sleep(3);
         exit(0);    //  그 외의 경우 종료
     }
 
