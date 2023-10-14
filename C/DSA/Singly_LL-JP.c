@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <unistd.h>
 
 //  データ+アドレスを格納するノード構造 -->
 
@@ -102,6 +103,8 @@ int main()
 
                         //  無効な入力選択に対するメッセージ
                         printf("\n無効な操作 !\n");
+                        sleep(2);
+                        goto menu;
                         break;
                 }
                 break;
@@ -221,6 +224,8 @@ int main()
         }
         else
         {
+            printf("\nありがとうございます。\n");
+            sleep(3);
             exit(0);    //  それ以外の場合は終了します
         }
 
