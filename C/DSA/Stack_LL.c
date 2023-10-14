@@ -119,7 +119,7 @@ stack* pop(stack *top)
         return top;
     }
 
-    printf("\nDeleted Data --> %d", temp->data);
+    printf("\nDeleted Data --> %d\n", temp->data);
     
     top = top->next;
     free(temp);
@@ -146,5 +146,11 @@ void disp(stack *top)
 
 void peek(stack *top)
 {
+    if (top == NULL)
+    {
+        printf("\nStack Is Empty !\n");
+        return;
+    }
 
+    printf("\nData --> %d", top->data);
 }
