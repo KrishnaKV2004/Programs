@@ -24,7 +24,7 @@ nd* f_del(nd*);             //  To Delete First Node Of Linked List
 nd* l_del(nd*);             //  To Delete Last Node Of Linked List
 nd* c_del(nd*, int);        //  To Delete Node From Custom Position
 
-nd * rev(nd *);             //  To Reverse The Linked List
+nd* rev(nd *);             //  To Reverse The Linked List
 
 void f_view(nd*);           //  To View Full Data In Linked List
 void c_view(nd*, int);      //  To View Specific Node Data In Linked List
