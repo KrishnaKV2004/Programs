@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <unistd.h>
 
 //  Node Structure To Store Data + Address-->
 
@@ -102,6 +103,8 @@ int main()
 
                         //  Message For Invalid Input Choice
                         printf("\nInvalid Operation !\n");
+                        sleep(2);
+                        goto menu;
                         break;
                 }
                 break;
@@ -221,6 +224,8 @@ int main()
         }
         else
         {
+            printf("\nThank You !");
+            sleep(3);
             exit(0);    //  Else Exit
         }
 
