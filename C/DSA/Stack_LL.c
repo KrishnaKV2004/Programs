@@ -111,7 +111,20 @@ stack* push(stack *top)
 
 stack* pop(stack *top)
 {
+    stack *temp = top;
 
+    if (top == NULL)
+    {
+        printf("\nStack Is Empty !\n");
+        return top;
+    }
+
+    printf("\nDeleted Data --> %d", temp->data);
+    
+    top = top->next;
+    free(temp);
+
+    return top;
 }
 
 void disp(stack *top)
