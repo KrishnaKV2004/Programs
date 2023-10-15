@@ -4,7 +4,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
 #include <unistd.h>
 
 //  데이터 및 주소를 저장하는 노드 구조체 -->
