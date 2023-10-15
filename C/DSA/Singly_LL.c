@@ -4,7 +4,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
 #include <unistd.h>
 
 //  Node Structure To Store Data + Address-->
@@ -17,20 +16,22 @@ typedef struct Node
 
 //  Function Declaration-->
 
-nd* f_ins(nd*);             //  To Insert Node At First Position
-nd* l_ins(nd*);             //  To Insert Node At Last Position
-nd* c_ins(nd*, int);        //  To Insert Node At Custom Position
+nd * f_ins(nd *);             //  To Insert Node At First Position
+nd * l_ins(nd *);             //  To Insert Node At Last Position
+nd * c_ins(nd *, int);        //  To Insert Node At Custom Position
 
-nd* f_del(nd*);             //  To Delete First Node Of Linked List
-nd* l_del(nd*);             //  To Delete Last Node Of Linked List
-nd* c_del(nd*, int);        //  To Delete Node From Custom Position
+nd * f_del(nd *);             //  To Delete First Node Of Linked List
+nd * l_del(nd *);             //  To Delete Last Node Of Linked List
+nd * c_del(nd *, int);        //  To Delete Node From Custom Position
 
-nd* rev(nd *);             //  To Reverse The Linked List
+nd * rev(nd *);               //  To Reverse The Linked List
 
-void f_view(nd*);           //  To View Full Data In Linked List
-void c_view(nd*, int);      //  To View Specific Node Data In Linked List
+void f_view(nd *);            //  To View Full Data In Linked List
+void c_view(nd *, int);       //  To View Specific Node Data In Linked List
 
-void nd_cn(int);            //  To Display Number Of Nodes In Linked List
+void sort(nd *);              //  To Sort The Linked List
+void nd_cn(int);              //  To Display Number Of Nodes In Linked List
+void middle(nd *, int);       //  To Display The Middle Node Of Linked List
 
 //  Main Function -->
 
@@ -51,7 +52,10 @@ int main()
         printf("\n[D] To Delete Node");
         printf("\n[V] To View Data");
         printf("\n[N] To View Nodes");
+        printf("\n[M] To View Middle Node");
+        printf("\n[S] To Sort The List");
         printf("\n[R] To Reverse The List");
+        printf("\n[E] To Exit Linked List");
         printf("\n\nChoose Operation ----> ");
         scanf(" %c", &choice);
 
@@ -199,6 +203,19 @@ int main()
                 nd_cn(node_count);
                 break;
 
+            case 'M' :
+            case 'm' :
+
+                //  Function To View Middle Node
+                middle(head, node_count);
+                break;
+
+            case 'S' :
+            case 's' :
+                //  Function To Sort The list
+                sort(head);
+                break;
+
             case 'R' :
             case 'r' :
 
@@ -206,10 +223,18 @@ int main()
                 head = rev(head);
                 break;
 
+            case 'E' :
+            case 'e' :
+                printf("\nLinked List Terminated !\n");
+                sleep(1);
+                exit(0);
+
             default :
 
                 //  Message For Invalid Input Choice
                 printf("\nInvalid Operation !\n");
+                sleep(2);
+                goto menu;
                 break;
         }
 
@@ -473,12 +498,15 @@ nd* c_del(nd *head, int node_count)
 
 nd* rev(nd *head)
 {
+    char see;       //  To See Reversed Linked List
+
     //  Checking If List Is Empty
     if (head == NULL)
     {
         printf("\nNo Nodes To Reverse !\n");
         return head;
     }
+
     //  To Point To Different Nodes To Exchange
     nd *prev,*curr,*nxt;
     prev=NULL;              
@@ -497,6 +525,14 @@ nd* rev(nd *head)
     head=prev;
 
     printf("\nLinked List Reversed Successfully !\n");
+    printf("\nDo You Want To View Reversed List [Y/N] --> ");
+    scanf(" %c", &see);
+
+    if (see == 'Y' || see == 'y')
+    {
+        f_view(head);
+    }
+
     return head;
 }
 
@@ -554,4 +590,72 @@ void nd_cn(int node_count)
 {
     //  Display Number Of Nodes
     printf("\nNodes --> %d\n", node_count);
+}
+
+void middle(nd *head, int node_count)
+{
+    int position = 0;       //  To Track Position
+
+    //  Checking If List Is Empty
+    if (node_count == 0)
+    {
+        printf("\nLinked List Is Empty !\n");
+        return;
+    }
+
+    //  If Number Of Nodes Are Even
+    if (node_count%2==0)
+    {
+        printf("\nNo Middle Node Found !\n");
+        return;
+    }
+    else
+    {
+        //  Finding The Middle Node
+        while(position<(node_count/2))
+        {
+            head = head->next;
+            position++;
+        }
+
+        printf("\nMiddle Node Data --> %d\n", head->data);
+    }
+}
+
+void sort(nd *head)
+{
+    int swap;               //  To Swap Data
+    char see;               //  To See Sorted List
+    nd *nxt = NULL;         //  To Point To Next Node
+    nd *curr = NULL;        //  To Point To Current node
+
+    //  Checking If List Is Empty
+    if (head == NULL)
+    {
+        printf("\nLinked List Is Empty !\n");
+        return;
+    }
+
+    //  Traversing The Next Node And Scanning With Current Then Update Current
+    for (curr=head; curr!=NULL; curr=curr->next)
+    {
+        for (nxt=curr->next; nxt!=NULL; nxt=nxt->next)
+        {
+            if ((nxt->data)<(curr->data))
+            {
+                swap = curr->data;
+                curr->data = nxt->data;
+                nxt->data = swap;
+            }
+        }
+    }
+    printf("\nLinked List Sorted !\n");
+    printf("\nDo You Want To View Sorted List [Y/N] --> ");
+    scanf(" %c", &see);
+
+    //  If Yes Show Linked List
+    if (see == 'Y' || see == 'y')
+    {
+        f_view(head);
+    }
 }
