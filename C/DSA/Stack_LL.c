@@ -2,7 +2,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
 #include <unistd.h>
 
 //  Structure Of Node -->
@@ -17,14 +16,14 @@ typedef struct Node
 
 void peek(stack *);         //  To Display Top Element Of Stack
 void disp(stack *);         //  To Display Elements Of Stack
-stack* pop(stack *);       //  To Pop Element From Stack
-stack* push(stack *);      //  To Push Element In Stack
+void node(stack *);         //  To Count Number Of Nodes
+stack* pop(stack *);        //  To Pop Element From Stack
+stack* push(stack *);       //  To Push Element In Stack
 
 //  Main Function -->
 
 int main()
 {
-    int node_count;
     char con, choice;
     stack *top = NULL;
 
@@ -37,6 +36,7 @@ int main()
         printf("\n[P] To Peek");
         printf("\n[V] To Display");
         printf("\n[N] To Count Nodes");
+        printf("\n[E] To Exit Stack");
         printf("\n\nChoose Operation ----> ");
         scanf(" %c", &choice);
 
@@ -61,6 +61,17 @@ int main()
         case 'v' :
             disp(top);
             break;
+
+        case 'N' :
+        case 'n' :
+            node(top);
+            break;
+
+        case 'E' :
+        case 'e' :
+            printf("\nStack Terminated !\n");
+            sleep(1);
+            exit(0);
 
         default:
             printf("\nInvalid Operation !\n");
@@ -153,4 +164,17 @@ void peek(stack *top)
     }
 
     printf("\nData --> %d", top->data);
+}
+
+void node(stack *top)
+{
+    int node_count = 0;
+
+    while (top!=NULL)
+    {
+        top = top->next;
+        node_count++;
+    }
+
+    printf("\nNodes In Stack --> %d\n", node_count);
 }
