@@ -1,8 +1,7 @@
-//  To Implement Stack Using Linked List ---->
+//  To Implement Queue Using Linked List ---->
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
 #include <unistd.h>
 
 //  Structure Of Node -->
@@ -11,66 +10,67 @@ typedef struct Node
 {
     int data;
     struct Node *next;
-} stack;
+} queue;
 
 //  Function Declaration -->
 
-void peek(stack *);         //  To Display Top Element Of Stack
-void disp(stack *);         //  To Display Elements Of Stack
-void node(stack *);         //  To Count Number Of Nodes
-stack* pop(stack *);        //  To Pop Element From Stack
-stack* push(stack *);       //  To Push Element In Stack
+void peek(queue *);                       //  To Display Top Element Of Queue
+void disp(queue *);                       //  To Display Elements Of Queue
+void node(queue *);                       //  To Count Number Of Nodes
+void enqueue(queue **, queue **);         //  To Pop Element From Queue
+void dequeue(queue **, queue **);         //  To Push Element In Queue
 
 //  Main Function -->
 
 int main()
 {
     char con, choice;
-    stack *top = NULL;
+    queue *front = NULL;
+    queue *rear = NULL;
 
     menu :
         system("cls");
-        printf("\n# ------ STACK ------ #\n");
+        printf("\n# ------ QUEUE ------ #\n");
         printf("\nOperations ---->\n");
-        printf("\n[I] To Push");
-        printf("\n[D] To Pop");
+        printf("\n[E] To Enqueue");
+        printf("\n[D] To Dequeue");
         printf("\n[P] To Peek");
         printf("\n[V] To Display");
         printf("\n[N] To Count Nodes");
-        printf("\n[E] To Exit Stack");
+        printf("\n[X] To Exit Stack");
         printf("\n\nChoose Operation ----> ");
         scanf(" %c", &choice);
 
         switch (choice)
         {
-        case 'I' :
-        case 'i' :
-            top = push(top);
+        case 'E' :
+        case 'e' :
+            enqueue(&front, &rear);
             break;
         
         case 'D' :
         case 'd' :
-            top = pop(top);
+            dequeue(&front, &rear);
             break;
 
         case 'P' :
         case 'p' :
-            peek(top);
+            peek(front);
             break;
 
         case 'V' :
         case 'v' :
-            disp(top);
+            disp(front);
             break;
 
         case 'N' :
         case 'n' :
-            node(top);
+            node(front);
             break;
 
-        case 'E' :
-        case 'e' :
-            printf("\nStack Terminated !\n");
+        case 'X' :
+        case 'x' :
+            printf("\nQueue Terminated !\n");
             sleep(1);
             exit(0);
 
@@ -100,82 +100,101 @@ int main()
 
 //  Function Definition -->
 
-stack* push(stack *top)
+void enqueue(queue **front, queue **rear)
 {
     int val;
-    stack *new_node = (stack *)malloc(sizeof(stack));
+    queue *temp = *front;
+    queue *new_node = (queue *)malloc(sizeof(queue));
 
     if (new_node == NULL)
     {
         printf("\nSorry ! Memory Not Allocated\n");
-        return top;
+        return;
     }
 
     printf("\nEnter Data --> ");
     scanf("%d", &val);
 
-    new_node->data = val;
-    new_node->next = top;
-    top = new_node;
-
-    return top;
-}
-
-stack* pop(stack *top)
-{
-    stack *temp = top;
-
-    if (top == NULL)
+    if (*front == NULL)
     {
-        printf("\nStack Is Empty !\n");
-        return top;
+        new_node->data = val;
+        new_node->next = *front;
+        *front = new_node;
+        *rear = new_node;
     }
+    else
+    {
+        new_node->data = val;
+        new_node->next = NULL;
+        
+        while ((temp)->next != NULL)
+        {
+            temp = (temp)->next;
+        }
 
-    printf("\nDeleted Data --> %d\n", temp->data);
-    
-    top = top->next;
-    free(temp);
-
-    return top;
+        (temp)->next = new_node;
+        *rear = new_node;
+    }
 }
 
-void disp(stack *top)
+void dequeue(queue **front, queue **rear)
 {
-    if (top == NULL)
+    queue *temp = *front;
+
+    if (*front == NULL)
     {
-        printf("\nStack Is Empty !\n");
+        printf("\nQueue Is Empty !\n");
         return;
     }
 
-    while (top!=NULL)
+    printf("\nDequeued Data --> %d\n", (*front)->data);
+
+    *front = (*front)->next;
+    free(temp);
+
+    if (*front == NULL)
     {
-        printf("\nData --> %d", top->data);
-        top = top->next;
+        *rear = NULL;
+    }
+}
+
+void disp(queue *front)
+{
+    if (front == NULL)
+    {
+        printf("\nQueue Is Empty !\n");
+        return;
+    }
+
+    while (front != NULL)
+    {
+        printf("\nData --> %d", front->data);
+        front = front->next;
     }
 
     printf("\n");
 }
 
-void peek(stack *top)
+void peek(queue *front)
 {
-    if (top == NULL)
+    if (front == NULL)
     {
-        printf("\nStack Is Empty !\n");
+        printf("\nQueue Is Empty !\n");
         return;
     }
 
-    printf("\nData --> %d", top->data);
+    printf("\nData --> %d\n", front->data);
 }
 
-void node(stack *top)
+void node(queue *front)
 {
     int node_count = 0;
 
-    while (top!=NULL)
+    while (front != NULL)
     {
-        top = top->next;
+        front = front->next;
         node_count++;
     }
 
-    printf("\nNodes In Stack --> %d\n", node_count);
+    printf("\nNodes In Queue --> %d\n", node_count);
 }
