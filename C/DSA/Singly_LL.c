@@ -156,6 +156,8 @@ int main()
 
                         //  Message For Invalid Input Choice
                         printf("\nInvalid Operation !\n");
+                        sleep(2);
+                        goto menu;
                         break;
                 }
                 break;
@@ -192,6 +194,8 @@ int main()
 
                         //  Message For Invalid Input Choice
                         printf("\nInvalid Operation !\n");
+                        sleep(2);
+                        goto menu;
                         break;
                 }
                 break;
@@ -343,7 +347,7 @@ nd* c_ins(nd *head, int node_count)
     //  Checking -ve Index Condition
     if (indx<=0)
     {
-        printf("\nInvalid Index ! [ Out Of Bound ]\n");
+        printf("\nInvalid Index ! [Out Of Bound]\n");
         return head;
     }
 
@@ -364,7 +368,7 @@ nd* c_ins(nd *head, int node_count)
     //  Checking If Index Exceeds Node
     if (indx > node_count)
     {
-        printf("\nInvalid Index [ Out Of Bound ]\n");
+        printf("\nInvalid Index [Out Of Bound]\n");
         return head;
     }
 
@@ -455,7 +459,7 @@ nd* c_del(nd *head, int node_count)
     //  If Index Is Zero
     if (indx<=0)
     {
-        printf("\nInvalid Index ! [ No Such Node ]\n");
+        printf("\nInvalid Index ! [No Such Node]\n");
         return head;
     }
 
@@ -468,14 +472,14 @@ nd* c_del(nd *head, int node_count)
     //  If Index Exceeding Last Node 
     else if (indx > node_count)
     {
-        printf("\nInvalid Index ! [ Node Doesn't Exist ]\n");
+        printf("\nInvalid Index ! [Node Doesn't Exist]\n");
         return head;
     }
 
     //  If Index Is Out Of Bound
     else if (temp == NULL || temp->next == NULL)
     {
-        printf("\nInvalid Index ! [ Out Of Bound ]\n");
+        printf("\nInvalid Index ! [Out Of Bound]\n");
         return head;
     }
 
@@ -522,16 +526,12 @@ nd* rev(nd *head)
     }
 
     //  Assigning Head
-    head=prev;
+    head = prev;
 
     printf("\nLinked List Reversed Successfully !\n");
-    printf("\nDo You Want To View Reversed List [Y/N] --> ");
-    scanf(" %c", &see);
 
-    if (see == 'Y' || see == 'y')
-    {
-        f_view(head);
-    }
+    //  Function Call To View Reversed Linked List
+    f_view(head);
 
     return head;
 }
@@ -625,7 +625,6 @@ void middle(nd *head, int node_count)
 void sort(nd *head)
 {
     int swap;               //  To Swap Data
-    char see;               //  To See Sorted List
     nd *nxt = NULL;         //  To Point To Next Node
     nd *curr = NULL;        //  To Point To Current node
 
@@ -650,12 +649,7 @@ void sort(nd *head)
         }
     }
     printf("\nLinked List Sorted !\n");
-    printf("\nDo You Want To View Sorted List [Y/N] --> ");
-    scanf(" %c", &see);
 
-    //  If Yes Show Linked List
-    if (see == 'Y' || see == 'y')
-    {
-        f_view(head);
-    }
+    //  Function Call To View Sorted Linked List
+    f_view(head);
 }
