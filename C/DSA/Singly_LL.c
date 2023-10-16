@@ -19,10 +19,12 @@ typedef struct Node
 nd * f_ins(nd *);             //  To Insert Node At First Position
 nd * l_ins(nd *);             //  To Insert Node At Last Position
 nd * c_ins(nd *, int);        //  To Insert Node At Custom Position
+nd * s_ins(nd *);             //  To Sort The List While Inserting
 
 nd * f_del(nd *);             //  To Delete First Node Of Linked List
 nd * l_del(nd *);             //  To Delete Last Node Of Linked List
 nd * c_del(nd *, int);        //  To Delete Node From Custom Position
+nd * a_del(nd *, int *);      //  To Delete Alternate Nodes In The List
 
 nd * rev(nd *);               //  To Reverse The Linked List
 
@@ -74,6 +76,7 @@ int main()
                 printf("\n[F] To Insert At First Position");
                 printf("\n[L] To Insert At Last Position");
                 printf("\n[C] To Insert At Custom Position");
+                printf("\n[S] To Sort While Inserting");
                 printf("\n\nChoose Operation ----> ");
                 scanf(" %c", &pos);
 
@@ -103,10 +106,18 @@ int main()
                         node_count ++;
                         break;
 
+                    case 'S' :
+                    case 's' :
+
+                        //  Function To Sort While Inserting
+                        head = s_ins(head);
+                        node_count++;
+                        break;
+
                     default:
 
                         //  Message For Invalid Input Choice
-                        printf("\nInvalid Operation !\n");
+                        printf("\nInvalid Operation !");
                         sleep(2);
                         goto menu;
                         break;
@@ -123,6 +134,7 @@ int main()
                 printf("\n[F] To Delete First Node");
                 printf("\n[L] To Delete Last Node");
                 printf("\n[C] To Delete Custom Node");
+                printf("\n[A] To Delete Alternate Nodes");
                 printf("\n\nChoose Operation ----> ");
                 scanf(" %c", &pos);
 
@@ -152,10 +164,17 @@ int main()
                         node_count --;
                         break;
 
+                    case 'A' :
+                    case 'a' :
+
+                        //  Function To Delete Alternate Nodes
+                        head = a_del(head, &node_count);
+                        break;
+
                     default:
 
                         //  Message For Invalid Input Choice
-                        printf("\nInvalid Operation !\n");
+                        printf("\nInvalid Operation !");
                         sleep(2);
                         goto menu;
                         break;
@@ -193,7 +212,7 @@ int main()
                     default :
 
                         //  Message For Invalid Input Choice
-                        printf("\nInvalid Operation !\n");
+                        printf("\nInvalid Operation !");
                         sleep(2);
                         goto menu;
                         break;
@@ -236,7 +255,7 @@ int main()
             default :
 
                 //  Message For Invalid Input Choice
-                printf("\nInvalid Operation !\n");
+                printf("\nInvalid Operation !");
                 sleep(2);
                 goto menu;
                 break;
@@ -251,11 +270,17 @@ int main()
         {
             goto menu;  //  If True Goto Menu
         }
-        else
+        else if (con=='N' || con=='n')
         {
             printf("\nThank You !");
             sleep(3);
-            exit(0);    //  Else Exit
+            exit(0);
+        }
+        else
+        {
+            printf("\nInvalid Choice !");
+            sleep(2);
+            goto menu;
         }
 
     return 0;
@@ -263,7 +288,7 @@ int main()
 
 //  Function Definition -->
 
-nd* f_ins(nd *head)
+nd * f_ins(nd *head)
 {
     int val;                                    //  To Store Data Value
     nd *new_node = (nd *)malloc(sizeof(nd));    //  New Node Allocation
@@ -288,7 +313,7 @@ nd* f_ins(nd *head)
     return head;
 }
 
-nd* l_ins(nd *head)
+nd * l_ins(nd *head)
 {
     int val;                                    //  To Store Data Value
     nd *temp = head;                            //  Temp Pointer To Traverse To The Last Node
@@ -333,7 +358,7 @@ nd* l_ins(nd *head)
     return head;
 }
 
-nd* c_ins(nd *head, int node_count)
+nd * c_ins(nd *head, int node_count)
 {
     int i,val,indx;                             //  To Iterate, Store Value And Index
     nd *exc = head;                             //  To Exchange Address With Temp Node
@@ -394,7 +419,50 @@ nd* c_ins(nd *head, int node_count)
     return head;
 }
 
-nd* f_del(nd *head)
+nd * s_ins(nd *head)
+{
+    int val;
+    nd *new_node = (nd *)malloc(sizeof(nd));
+
+    //  If Memory Not Allocated
+    if (new_node == NULL)
+    {
+        printf("\nSorry! Memory Not Allocated\n");
+        return head;
+    }
+
+    printf("\nEnter Data --> ");
+    scanf("%d", &val);
+
+    new_node->data = val;
+    new_node->next = NULL;
+
+    //  If No Node Exist And Value Is Smaller
+    if (head == NULL || val <= head->data)
+    {
+        new_node->next = head;
+        head = new_node;
+    }
+    else
+    {
+        nd *temp = head;
+
+        while (temp->next != NULL && temp->next->data < val)
+        {
+            temp = temp->next;
+        }
+
+        new_node->next = temp->next;
+        temp->next = new_node;
+    }
+
+    //  Function Call To View Sorted Linked List
+    f_view(head);
+
+    return head;
+}
+
+nd * f_del(nd *head)
 {
     //  Checking If List Is Empty
     if (head == NULL)
@@ -412,7 +480,7 @@ nd* f_del(nd *head)
     return head;
 }
 
-nd* l_del(nd *head)
+nd * l_del(nd *head)
 {
     //  Checking If Linked List Is Empty
     if (head == NULL)
@@ -439,7 +507,7 @@ nd* l_del(nd *head)
     return head;
 }
 
-nd* c_del(nd *head, int node_count)
+nd * c_del(nd *head, int node_count)
 {
     int i, indx;    //  To Iterate And Store Index
 
@@ -500,7 +568,48 @@ nd* c_del(nd *head, int node_count)
     return head;
 }
 
-nd* rev(nd *head)
+nd* a_del(nd* head, int* node_count)
+{
+    //  Checking If The List Is Empty
+    if (head == NULL)
+    {
+        printf("\nLinked List Is Empty!\n");
+        return head;
+    }
+
+    //  To Track Nodes
+    nd* curr = head;
+    nd* nxt = head->next;
+    nd* prev = NULL;
+
+    while (curr != NULL && nxt != NULL)
+    {
+        // Remove the current node
+        curr->next = nxt->next;
+        free(nxt);
+        (*node_count)--;
+
+        // Move to the next pair of nodes
+        prev = curr;
+        curr = curr->next;
+
+        if (curr != NULL)
+        {
+            nxt = curr->next;
+        }
+        else
+        {
+            nxt = NULL;
+        }
+    }
+
+    //  Function Call To Display Linked List
+    f_view(head);
+    
+    return head;
+}
+
+nd * rev(nd *head)
 {
     char see;       //  To See Reversed Linked List
 
