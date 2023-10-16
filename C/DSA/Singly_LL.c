@@ -40,6 +40,8 @@ void middle(nd *, int);       //  To Display The Middle Node Of Linked List
 int main()
 {
     nd *head = NULL;         //  To Store Address Of First Node
+    int nodes;               //  To Insert Multiple Nodes
+    int iteration = 0;       //  To Track The Iteration
     int node_count = 0;      //  To Count The Nodes In The Linked List
     char con, pos, choice;   //  To Input Choice, Continue And Position To Operate
 
@@ -86,16 +88,38 @@ int main()
                     case 'f' :
 
                         //  Function To Insert Node At First Position
-                        head = f_ins(head);
-                        node_count ++;
+                        printf("\nNumber Of Nodes To Insert --> ");
+                        scanf("%d", &nodes);
+                        printf("\n");
+
+                        iteration = 0;
+
+                        while (iteration<nodes)
+                        {
+                            head = f_ins(head);
+                            node_count ++;
+                            iteration ++;
+                        }
+
                         break;
 
                     case 'L' :
                     case 'l' :
 
                         //  Function To Insert Node At Last Position
-                        head = l_ins(head);
-                        node_count ++;
+                        printf("\nNumber Of Nodes To Insert --> ");
+                        scanf("%d", &nodes);
+                        printf("\n");
+
+                        iteration = 0;
+
+                        while (iteration<nodes)
+                        {
+                            head = l_ins(head);
+                            node_count ++;
+                            iteration ++;
+                        }
+                        
                         break;
 
                     case 'C' :
@@ -109,9 +133,9 @@ int main()
                     case 'S' :
                     case 's' :
 
-                        //  Function To Sort While Inserting
+                        //  Function To Sort While Insertion
                         head = s_ins(head);
-                        node_count++;
+                        node_count ++;
                         break;
 
                     default:
@@ -248,7 +272,7 @@ int main()
 
             case 'E' :
             case 'e' :
-                printf("\nLinked List Terminated !\n");
+                printf("\nLinked List Terminated !");
                 sleep(1);
                 exit(0);
 
@@ -302,7 +326,7 @@ nd * f_ins(nd *head)
     }
 
     //  Input Value To Store
-    printf("\nEnter Data --> ");
+    printf("Enter Data --> ");
     scanf("%d", &val);
 
     //  Joining New Node And Updating Head
@@ -327,7 +351,7 @@ nd * l_ins(nd *head)
         return head;
     }
 
-    printf("\nEnter Data --> ");
+    printf("Enter Data --> ");
     scanf("%d", &val);
 
     //  Checking If There Is No Node
