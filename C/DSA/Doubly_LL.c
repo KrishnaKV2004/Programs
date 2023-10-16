@@ -15,13 +15,13 @@ typedef struct Node
 
 //  Function Declaration -->
 
-nd* f_ins(nd **head, nd **tail);            //  To Insert Node At First Position
-nd* l_ins(nd **head, nd **tail);            //  To Insert Node At Last Position
-nd* c_ins(nd **head, nd **tail);            //  To Insert Node At Custom Position
+void f_ins(nd **head, nd **tail);            //  To Insert Node At First Position
+void l_ins(nd **head, nd **tail);            //  To Insert Node At Last Position
+void c_ins(nd **head, nd **tail);            //  To Insert Node At Custom Position
 
-nd* f_del(nd **head, nd **tail);            //  To Delete First Node
-nd* l_del(nd **head, nd **tail);            //  To Delete Last Node
-nd* c_del(nd **head, nd **tail);            //  To Delete Custom Node
+void f_del(nd **head, nd **tail);            //  To Delete First Node
+void l_del(nd **head, nd **tail);            //  To Delete Last Node
+void c_del(nd **head, nd **tail);            //  To Delete Custom Node
 
 nd *rev(nd *head);                          //  To Reverse The Linked List
 
