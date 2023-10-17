@@ -18,8 +18,8 @@ typedef struct Node
 
 nd * f_ins(nd *);             //  To Insert Node At First Position
 nd * l_ins(nd *);             //  To Insert Node At Last Position
-nd * c_ins(nd *, int);        //  To Insert Node At Custom Position
 nd * s_ins(nd *);             //  To Sort The List While Inserting
+nd * c_ins(nd *, int);        //  To Insert Node At Custom Position
 
 nd * f_del(nd *);             //  To Delete First Node Of Linked List
 nd * l_del(nd *);             //  To Delete Last Node Of Linked List
