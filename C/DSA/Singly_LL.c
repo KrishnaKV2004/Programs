@@ -446,6 +446,7 @@ nd * c_ins(nd *head, int node_count)
 nd * s_ins(nd *head)
 {
     int val;
+    nd *temp = head;
     nd *new_node = (nd *)malloc(sizeof(nd));
 
     //  If Memory Not Allocated
@@ -469,8 +470,6 @@ nd * s_ins(nd *head)
     }
     else
     {
-        nd *temp = head;
-
         while (temp->next != NULL && temp->next->data < val)
         {
             temp = temp->next;
