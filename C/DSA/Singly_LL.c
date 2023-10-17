@@ -461,7 +461,7 @@ nd * s_ins(nd *head)
     new_node->data = val;
     new_node->next = NULL;
 
-    //  If No Node Exist And Value Is Smaller
+    //  If No Node Exist Or Value Is Smaller
     if (head == NULL || val <= head->data)
     {
         new_node->next = head;
@@ -592,7 +592,7 @@ nd * c_del(nd *head, int node_count)
     return head;
 }
 
-nd* a_del(nd* head, int* node_count)
+nd* a_del(nd *head, int *node_count)
 {
     //  Checking If The List Is Empty
     if (head == NULL)
