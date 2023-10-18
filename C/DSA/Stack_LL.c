@@ -69,12 +69,12 @@ int main()
 
         case 'E' :
         case 'e' :
-            printf("\nStack Terminated !\n");
+            printf("\nStack Terminated !");
             sleep(1);
             exit(0);
 
         default:
-            printf("\nInvalid Operation !\n");
+            printf("\nInvalid Operation !");
             sleep(2);
             goto menu;
             break;
@@ -163,7 +163,7 @@ void peek(stack *top)
         return;
     }
 
-    printf("\nData --> %d", top->data);
+    printf("\nData --> %d\n", top->data);
 }
 
 void node(stack *top)
