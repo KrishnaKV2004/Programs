@@ -70,12 +70,12 @@ int main()
 
         case 'X' :
         case 'x' :
-            printf("\nQueue Terminated !\n");
+            printf("\nQueue Terminated !");
             sleep(1);
             exit(0);
 
         default:
-            printf("\nInvalid Operation !\n");
+            printf("\nInvalid Operation !");
             sleep(2);
             goto menu;
             break;
