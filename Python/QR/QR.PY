@@ -1,3 +1,5 @@
+
+
 import qrcode
 
 qr = qrcode.QRCode(
@@ -7,7 +9,7 @@ qr = qrcode.QRCode(
     border=4
 )
 
-qr.add_data("https://www.w3schools.com/python/")
+qr.add_data("https://github.com/KrishnaKV2004")
 
 img = qr.make_image()
 img.save("QRCode.jpg")
