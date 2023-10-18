@@ -1,47 +1,32 @@
-//  Implementation Of Doubly Linked List ---->
-
-//  Header Files -->
 #include <stdio.h>
 #include <stdlib.h>
 
-//  Structure Of Node -->
-
-typedef struct Node
-{
+typedef struct Node {
     int data;
     struct Node *prev;
     struct Node *next;
 } nd;
 
-//  Function Declaration -->
+// Function prototypes
+nd* f_ins(nd **head, nd **tail);
+nd* l_ins(nd **head, nd **tail);
+nd* c_ins(nd **head, nd **tail);
+nd* f_del(nd **head, nd **tail);
+nd* l_del(nd **head, nd **tail);
+nd* c_del(nd **head, nd **tail);
+nd *rev(nd *head);
 
-void f_ins(nd **head, nd **tail);            //  To Insert Node At First Position
-void l_ins(nd **head, nd **tail);            //  To Insert Node At Last Position
-void c_ins(nd **head, nd **tail);            //  To Insert Node At Custom Position
+void f_view(nd *head);
+void c_view(nd *head, int node_count);
+int nd_cn(nd *head);
 
-void f_del(nd **head, nd **tail);            //  To Delete First Node
-void l_del(nd **head, nd **tail);            //  To Delete Last Node
-void c_del(nd **head, nd **tail);            //  To Delete Custom Node
-
-nd *rev(nd *head);                          //  To Reverse The Linked List
-
-void f_view(nd *head);                      //  To View Data In Linked List
-void c_view(nd *head, int node_count);      //  To View Data At Custom Nodes
-
-void nd_cn(int node_count);                 //  To Count Nodes In Linked List
-
-//  Main Function -->
-
-int main()
-{
-    nd *head = NULL;        //  To Point At First Node
-    nd *tail = NULL;        //  To Point At Last Node
+int main() {
+    nd *head = NULL;
+    nd *tail = NULL; // Add a tail pointer
     int node_count = 0;
     char con, pos, choice;
 
-    //  Menu To Give Choice Of Operations -->
-
-    menu:
+    while (1) {
         system("cls");
         printf("\n# -------- Doubly Linked List -------- #\n");
         printf("\nOperations ---->\n");
@@ -53,10 +38,7 @@ int main()
         printf("\n\nChoose Operation ----> ");
         scanf(" %c", &choice);
 
-        //  Function Calls Based On Desired Operation -->
-
-        switch (choice)
-        {
+        switch (choice) {
             case 'I':
             case 'i':
                 system("cls");
@@ -67,21 +49,20 @@ int main()
                 printf("\n\nChoose Operation ----> ");
                 scanf(" %c", &pos);
 
-                switch (pos)
-                {
+                switch (pos) {
                     case 'F':
                     case 'f':
-                        f_ins(&head, &tail);
+                        f_ins(&head, &tail, &node_count);
                         break;
 
                     case 'L':
                     case 'l':
-                        l_ins(&head, &tail);
+                        l_ins(&head, &tail, &node_count);
                         break;
 
                     case 'C':
                     case 'c':
-                        c_ins(&head, &tail);
+                        c_ins(&head, &tail, &node_count);
                         break;
 
                     default:
@@ -100,21 +81,20 @@ int main()
                 printf("\n\nChoose Operation ----> ");
                 scanf(" %c", &pos);
 
-                switch (pos)
-                {
+                switch (pos) {
                     case 'F':
                     case 'f':
-                        f_del(&head, &tail);
+                        f_del(&head, &tail, &node_count);
                         break;
 
                     case 'L':
                     case 'l':
-                        l_del(&head, &tail);
+                        l_del(&head, &tail, &node_count);
                         break;
 
                     case 'C':
                     case 'c':
-                        c_del(&head, &tail);
+                        c_del(&head, &tail, &node_count);
                         break;
 
                     default:
@@ -132,8 +112,7 @@ int main()
                 printf("\n\nChoose Operation ----> ");
                 scanf(" %c", &pos);
 
-                switch (pos)
-                {
+                switch (pos) {
                     case 'A':
                     case 'a':
                         f_view(head);
@@ -165,289 +144,244 @@ int main()
                 break;
         }
 
-        //  To Ask User If He Wish To Continue -->
-        
         printf("\nContinue Operation ? [Y/N] --> ");
         scanf(" %c", &con);
 
-        if (con == 'Y' || con == 'y')
-        {
-            goto menu;
+        if (con == 'N' || con == 'n') {
+            break;
         }
-        else
-        {
-            exit(0);
-        }
+    }
 
     return 0;
 }
 
-//  Function Definition -->
-
-nd* f_ins(nd **head, nd **tail)
-{
+nd* f_ins(nd **head, nd **tail, int *node_count) {
     int val;
     nd *new_node = (nd *)malloc(sizeof(nd));
 
-    if (new_node == NULL)
-    {
-        printf("\nSorry ! Memory Not Allocated\n");
-        return;
+    if (new_node == NULL) {
+        printf("\nSorry! Memory Not Allocated\n");
+        return NULL;
     }
 
     printf("\nEnter Data --> ");
     scanf("%d", &val);
 
-    if (*head == NULL && *tail == NULL)
-    {
-        new_node->data = val;
-        new_node->prev = *head;
-        new_node->next = *tail;
-        *head = new_node;
+    new_node->data = val;
+    new_node->prev = NULL;
+    new_node->next = *head;
+
+    if (*head == NULL) {
         *tail = new_node;
-    }
-    else
-    {
-        new_node->data = val;
-        new_node->prev = NULL;
-        new_node->next = *head;
+    } else {
         (*head)->prev = new_node;
-        *head = new_node;
     }
+
+    *head = new_node;
+    (*node_count)++;
+
+    return new_node;
 }
 
-nd* l_ins(nd **head, nd **tail)
-{
+nd* l_ins(nd **head, nd **tail, int *node_count) {
     int val;
     nd *new_node = (nd *)malloc(sizeof(nd));
 
-    if (new_node == NULL)
-    {
-        printf("\nSorry ! Memory Not Allocated\n");
-        return;
+    if (new_node == NULL) {
+        printf("\nSorry! Memory Not Allocated\n");
+        return NULL;
     }
 
     printf("\nEnter Data --> ");
     scanf("%d", &val);
 
-    if (*head == NULL && *tail == NULL)
-    {
-        new_node->data = val;
-        new_node->prev = *head;
-        new_node->next = *tail;
+    new_node->data = val;
+    new_node->prev = *tail;
+    new_node->next = NULL;
+
+    if (*tail == NULL) {
         *head = new_node;
-        *tail = new_node;
-    }
-    else
-    {
-        new_node->data = val;
-        new_node->prev = *tail;
-        new_node->next = NULL;
+    } else {
         (*tail)->next = new_node;
-        *tail = new_node;
     }
+
+    *tail = new_node;
+    (*node_count)++;
+
+    return new_node;
 }
 
-nd* c_ins(nd **head, nd **tail)
-{
+nd* c_ins(nd **head, nd **tail, int *node_count) {
     int i, val, indx;
-    nd *exc = *head;
-    nd *temp = (*head)->next;
+    nd *temp = *head;
     nd *new_node = (nd *)malloc(sizeof(nd));
 
     printf("\nEnter Place To Insert Node --> ");
     scanf("%d", &indx);
 
-    if (indx <= 0)
-    {
-        printf("\nInvalid Index ! [ Out Of Bound ]\n");
-        return;
+    if (indx <= 0 || indx > *node_count + 1) {
+        printf("\nInvalid Index! [Out Of Bound]\n");
+        return NULL;
     }
 
-    if (indx == 1)
-    {
-        f_ins(head, tail);
-        return;
+    if (indx == 1) {
+        return f_ins(head, tail, node_count);
     }
 
-    if (indx == 2)
-    {
-        l_ins(head, tail);
-        return;
-    }
-
-    if (indx > (*tail)->data)
-    {
-        printf("\nInvalid Index [ Out Of Bound ]\n");
-        return;
+    if (indx == *node_count + 1) {
+        return l_ins(head, tail, node_count);
     }
 
     printf("\nEnter Data --> ");
     scanf("%d", &val);
 
-    for (i = 1; i < indx - 1; i++)
-    {
+    for (i = 1; i < indx - 1; i++) {
         temp = temp->next;
-        exc = exc->next;
     }
 
     new_node->data = val;
-    new_node->prev = exc;
-    new_node->next = temp;
-    exc->next = new_node;
-    temp->prev = new_node;
+    new_node->prev = temp;
+    new_node->next = temp->next;
+    temp->next->prev = new_node;
+    temp->next = new_node;
+    (*node_count)++;
+
+    return new_node;
 }
 
-nd* f_del(nd **head, nd **tail)
-{
-    if (*head == NULL)
-    {
+nd* f_del(nd **head, nd **tail, int *node_count) {
+    if (*head == NULL) {
         printf("\nLinked List Is Empty\n");
-        return;
+        return NULL;
     }
 
     nd *temp = *head;
 
-    if ((*head)->next == NULL)
-    {
+    if ((*head)->next == NULL) {
         *head = NULL;
         *tail = NULL;
-        free(temp);
-        return;
+    } else {
+        *head = (*head)->next;
+        (*head)->prev = NULL;
     }
 
-    *head = (*head)->next;
-    (*head)->prev = NULL;
     free(temp);
+    (*node_count)--;
+
+    return *head;
 }
 
-nd* l_del(nd **head, nd **tail)
-{
-    if (*head == NULL)
-    {
+nd* l_del(nd **head, nd **tail, int *node_count) {
+    if (*head == NULL) {
         printf("\nLinked List Is Empty\n");
-        return;
+        return NULL;
     }
 
     nd *temp = *tail;
 
-    if ((*head)->next == NULL)
-    {
+    if ((*head)->next == NULL) {
         *head = NULL;
         *tail = NULL;
-        free(temp);
-        return;
+    } else {
+        *tail = (*tail)->prev;
+        (*tail)->next = NULL;
     }
 
-    *tail = (*tail)->prev;
-    (*tail)->next = NULL;
     free(temp);
+    (*node_count)--;
+
+    return *head;
 }
 
-nd* c_del(nd **head, nd **tail)
-{
+nd* c_del(nd **head, nd **tail, int *node_count) {
     int i, indx;
-    nd *exc = *head;
-    nd *temp = (*head)->next;
+    nd *temp = *head;
 
-    printf("\nNode To Delete ? --> ");
+    printf("\nEnter Node To Delete ? --> ");
     scanf("%d", &indx);
 
-    if (indx <= 0)
-    {
-        printf("\nInvalid Index ! [ No Such Node ]\n");
-        return;
+    if (indx <= 0 || indx > *node_count) {
+        printf("\nInvalid Index! [No Such Node]\n");
+        return NULL;
     }
 
-    if (indx == 1)
-    {
-        f_del(head, tail);
-        return;
+    if (indx == 1) {
+        return f_del(head, tail, node_count);
     }
 
-    if (indx == 2)
-    {
-        l_del(head, tail);
-        return;
+    if (indx == *node_count) {
+        return l_del(head, tail, node_count);
     }
 
-    if (temp == NULL || temp->next == NULL)
-    {
-        printf("\nInvalid Index ! [ Out Of Bound ]\n");
-        return;
-    }
-
-    for (i = 1; i < indx - 1; i++)
-    {
+    for (i = 1; i < indx; i++) {
         temp = temp->next;
-        exc = exc->next;
     }
 
-    exc->next = temp->next;
-    temp->next->prev = exc;
+    temp->prev->next = temp->next;
+    temp->next->prev = temp->prev;
     free(temp);
+    (*node_count)--;
+
+    return *head;
 }
 
-nd* rev(nd *head)
-{
-    if (head == NULL)
-    {
-        printf("\nNo Nodes To Reverse !\n");
-        return head;
+nd* rev(nd *head) {
+    if (head == NULL) {
+        printf("\nNo Nodes To Reverse!\n");
+        return NULL;
     }
 
-    nd *prev, *curr, *nxt;
-    prev = NULL;
-    curr = nxt = head;
+    nd *temp = NULL;
+    nd *current = head;
 
-    while (nxt != NULL)
-    {
-        nxt = nxt->next;
-        curr->next = prev;
-        curr->prev = nxt;
-        prev = curr;
-        curr = nxt;
+    while (current != NULL) {
+        temp = current->prev;
+        current->prev = current->next;
+        current->next = temp;
+        current = current->prev;
     }
 
-    head = prev;
-    printf("\nLinked List Reversed Successfully !\n");
+    if (temp != NULL) {
+        head = temp->prev;
+    }
+
+    printf("\nLinked List Reversed Successfully!\n");
     return head;
 }
 
-void f_view(nd *head)
-{
-    while (head != NULL)
-    {
+void f_view(nd *head) {
+    while (head != NULL) {
         printf("\nData --> %d", head->data);
         head = head->next;
     }
-
     printf("\n");
 }
 
-void c_view(nd *head, int node_count)
-{
+void c_view(nd *head, int node_count) {
     int i, indx;
     nd *temp = head;
 
     printf("\nEnter Index To View Node Data --> ");
     scanf("%d", &indx);
 
-    if (indx <= 0 || indx > node_count)
-    {
-        printf("\nInvalid Node !\n");
+    if (indx <= 0 || indx > node_count) {
+        printf("\nInvalid Node!\n");
         return;
     }
 
-    for (i = 1; i < indx; i++)
-    {
+    for (i = 1; i < indx; i++) {
         temp = temp->next;
     }
 
     printf("\nData --> %d\n", temp->data);
 }
 
-void nd_cn(int node_count)
-{
-    printf("\nNodes --> %d\n", node_count);
+int nd_cn(nd *head) {
+    int count = 0;
+    while (head != NULL) {
+        count++;
+        head = head->next;
+    }
+    printf("\nNodes --> %d\n", count);
+    return count;
 }
