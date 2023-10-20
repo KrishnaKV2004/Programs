@@ -101,7 +101,7 @@ int main()
                     default:
 
                         //  無効な入力選択に対するメッセージ
-                        printf("\n無効な操作 !\n");
+                        printf("\n無効な操作 !");
                         sleep(2);
                         goto menu;
                         break;
@@ -150,7 +150,9 @@ int main()
                     default:
 
                         //  無効な入力選択に対するメッセージ
-                        printf("\n無効な操作 !\n");
+                        printf("\n無効な操作 !");
+                        sleep(2);
+                        goto menu;
                         break;
                 }
                 break;
@@ -208,7 +210,9 @@ int main()
             default :
 
                 //  無効な入力選択に対するメッセージ
-                printf("\n無効な操作 !\n");
+                printf("\n無効な操作 !");
+                sleep(2);
+                goto menu;
                 break;
         }
 
@@ -223,7 +227,7 @@ int main()
         }
         else
         {
-            printf("\nありがとうございます。\n");
+            printf("\nありがとうございます。");
             sleep(3);
             exit(0);    //  それ以外の場合は終了します
         }
