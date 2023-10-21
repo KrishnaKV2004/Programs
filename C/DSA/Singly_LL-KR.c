@@ -101,7 +101,9 @@ int main()
                 default:
 
                     //  잘못된 입력 선택에 대한 메시지
-                    printf("\n잘못된 작업 !\n");
+                    printf("\n잘못된 작업 !");
+                    sleep(2);
+                    goto menu;
                     break;
             }
             break;
@@ -147,7 +149,7 @@ int main()
                 default:
 
                     //  잘못된 입력 선택에 대한 메시지
-                    printf("\n잘못된 작업 !\n");
+                    printf("\n잘못된 작업 !");
                     sleep(2);
                     goto menu;
                     break;
@@ -184,7 +186,9 @@ int main()
                 default :
 
                     //  잘못된 입력 선택에 대한 메시지
-                    printf("\n잘못된 작업 !\n");
+                    printf("\n잘못된 작업 !");
+                    sleep(2);
+                    goto menu;
                     break;
             }
             break;
@@ -206,7 +210,9 @@ int main()
         default :
 
             //  잘못된 입력 선택에 대한 메시지
-            printf("\n잘못된 작업 !\n");
+            printf("\n잘못된 작업 !");
+            sleep(2);
+            goto menu;
             break;
     }
 
@@ -221,7 +227,7 @@ int main()
     }
     else
     {
-        printf("\n감사합니다\n");
+        printf("\n감사합니다");
         sleep(3);
         exit(0);    //  그 외의 경우 종료
     }
