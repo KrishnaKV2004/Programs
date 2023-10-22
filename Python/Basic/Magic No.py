@@ -1,7 +1,0 @@
-print("Choose a no. from 1 to 10 :")
-sleep (3)
-print("Double it")
-print("Add 10 to it")
-print("Divide it by 2")
-print("Subtract the no. you chose")
-print("Answer : 5")
