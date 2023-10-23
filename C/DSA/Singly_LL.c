@@ -27,6 +27,7 @@ nd * c_del(nd *, int);        //  To Delete Node From Custom Position
 nd * a_del(nd *, int *);      //  To Delete Alternate Nodes In The List
 
 nd * rev(nd *);               //  To Reverse The Linked List
+nd * rotate(nd *);            //  To Rotate The Linked List
 
 void f_view(nd *);            //  To View Full Data In Linked List
 void c_view(nd *, int);       //  To View Specific Node Data In Linked List
@@ -59,6 +60,7 @@ int main()
         printf("\n[M] To View Middle Node");
         printf("\n[S] To Sort The List");
         printf("\n[R] To Reverse The List");
+        printf("\n[K] To Rotate The Linked List");
         printf("\n[E] To Exit Linked List");
         printf("\n\nChoose Operation ----> ");
         scanf(" %c", &choice);
@@ -259,6 +261,7 @@ int main()
 
             case 'S' :
             case 's' :
+
                 //  Function To Sort The list
                 sort(head);
                 break;
@@ -268,6 +271,13 @@ int main()
 
                 //  Function To Reverse The Linked List
                 head = rev(head);
+                break;
+
+            case 'K' :
+            case 'k' :
+
+                //  Function To Rotate Linked List
+                head = rotate(head);
                 break;
 
             case 'E' :
@@ -784,4 +794,26 @@ void sort(nd *head)
 
     //  Function Call To View Sorted Linked List
     f_view(head);
+}
+
+nd * rotate(nd *head)
+{
+    int rotate_num;
+    nd *temp = head;
+
+    if (head == NULL)
+    {
+        printf("\nLinked List Is Empty !\n");
+        return head;
+    }
+
+    printf("\nEnter Rotating Number --> ");
+    scanf("%d", &rotate_num);
+ 
+    while (temp->next!=NULL)
+    {
+        temp = temp->next;
+    }
+
+    temp->next = head;
 }
