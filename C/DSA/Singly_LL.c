@@ -814,7 +814,9 @@ nd * rotate(nd *head, int node_count)
 
     if (rotate_num == 0)
     {
+        printf("\nNo Nodes To Rotate !\n");
         f_view(head);
+
         return head;
     }
  
