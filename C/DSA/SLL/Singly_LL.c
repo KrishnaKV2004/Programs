@@ -798,20 +798,23 @@ void sort(nd *head)
 
 nd * rotate(nd *head, int node_count)
 {
-    int iterate;
-    int rotate_num;
-    nd *temp = head;
-    nd *last = head;
+    int iterate;            //  To Iterate Loop
+    int rotate_num;         //  To Store Rotating Number
+    nd *temp = head;        //  To Traverse Upto Shifting Data
+    nd *last = head;        //  To Traverse To The Last Node
 
+    //  Checking If Linked List Is Empty
     if (head == NULL)
     {
         printf("\nLinked List Is Empty !\n");
         return head;
     }
 
+    //  Scanning The Rotating Number
     printf("\nEnter Rotating Number --> ");
     scanf("%d", &rotate_num);
 
+    //  Checking If Rotating Number Is Zero
     if (rotate_num == 0)
     {
         printf("\nNo Nodes To Rotate !\n");
@@ -820,25 +823,31 @@ nd * rotate(nd *head, int node_count)
         return head;
     }
  
+    //  Checking If Rotating Number Is Greater Than Node Count
     if (rotate_num > node_count)
     {
+        //  Updating Rotating Number By Modulo With Node Count
         rotate_num = rotate_num % node_count;
     }
 
+    //  Traverse To The Shifting Data
     for (iterate = 1; iterate < (node_count - rotate_num); iterate++)
     {
         temp = temp->next;
     }
 
+    //  Traverse To The Last Node
     while (last->next!=NULL)
     {
         last = last->next;
     }
 
+    //  Changing The Node Links
     last->next = head;
     head = temp->next;
     temp->next = NULL;
 
+    //  Display Rotated Linked List
     printf("\nLinked List Rotated Successfully !\n");
     f_view(head);
 
