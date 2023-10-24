@@ -27,7 +27,7 @@ nd * c_del(nd *, int);        //  To Delete Node From Custom Position
 nd * a_del(nd *, int *);      //  To Delete Alternate Nodes In The List
 
 nd * rev(nd *);               //  To Reverse The Linked List
-nd * rotate(nd *);            //  To Rotate The Linked List
+nd * rotate(nd *, int);       //  To Rotate The Linked List
 
 void f_view(nd *);            //  To View Full Data In Linked List
 void c_view(nd *, int);       //  To View Specific Node Data In Linked List
@@ -277,7 +277,7 @@ int main()
             case 'k' :
 
                 //  Function To Rotate Linked List
-                head = rotate(head);
+                head = rotate(head, node_count);
                 break;
 
             case 'E' :
@@ -796,10 +796,12 @@ void sort(nd *head)
     f_view(head);
 }
 
-nd * rotate(nd *head)
+nd * rotate(nd *head, int node_count)
 {
+    int iterate;
     int rotate_num;
     nd *temp = head;
+    nd *last = head;
 
     if (head == NULL)
     {
@@ -809,11 +811,34 @@ nd * rotate(nd *head)
 
     printf("\nEnter Rotating Number --> ");
     scanf("%d", &rotate_num);
+
+    if (rotate_num == 0)
+    {
+        f_view(head);
+        return head;
+    }
  
-    while (temp->next!=NULL)
+    if (rotate_num > node_count)
+    {
+        rotate_num = rotate_num % node_count;
+    }
+
+    for (iterate = 1; iterate < (node_count - rotate_num); iterate++)
     {
         temp = temp->next;
     }
 
-    temp->next = head;
+    while (last->next!=NULL)
+    {
+        last = last->next;
+    }
+
+    last->next = head;
+    head = temp->next;
+    temp->next = NULL;
+
+    printf("\nLinked List Rotated Successfully !\n");
+    f_view(head);
+
+    return head;
 }
