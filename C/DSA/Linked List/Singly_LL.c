@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include "Headers\Singly.h"
 
 //  Main Function -->
 
@@ -247,7 +248,7 @@ int main()
             case 'k' :
 
                 //  Function To Rotate Linked List
-                head = rotate(head);
+                head = rotate(head, node_count);
                 break;
 
             case 'E' :
