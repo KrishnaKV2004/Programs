@@ -1,13 +1,27 @@
-#include <DigiKeyboard.h>
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+
+// Set the LCD address (usually 0x27 or 0x3F)
+// You can use the I2C scanner to find the correct address
+LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 void setup() {
-  // Set up the keyboard
-  DigiKeyboard.delay(2000);  // Delay for 2 seconds
-  DigiKeyboard.sendKeyStroke(0);  // Release all keys
-  DigiKeyboard.sendKeyStroke(KEY_R, MOD_GUI_LEFT); // Press Win + R
-  DigiKeyboard.delay(1000); // Wait for the Run dialog to open
+  // initialize with the I2C addr 0x27, 16 columns and 2 rows
+  lcd.init();
+ 
+
+  // Print a message to the LCD.
+  lcd.print("Hello, Krishna");
 }
 
 void loop() {
-  // Nothing to do here
+  // Set the cursor to the beginning of the second line
+  lcd.setCursor(0, 1);
+
+  // Print the current millis value (uptime)
+  lcd.print("Millis: ");
+  lcd.print(millis() / 1000); // convert millis to seconds
+
+  delay(500); // Wait for a second
+  lcd.scrollDisplayLeft();
 }
