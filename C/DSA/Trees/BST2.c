@@ -191,13 +191,6 @@ void countNodesWithBoth(TreeNode* root, int* bothCount) {
     }
 }
 
-int countLeftNodes(TreeNode* root) {
-    if (root == NULL) {
-        return 0;
-    }
-    return 1 + countLeftNodes(root->left) + countLeftNodes(root->right);
-}
-
 int findMinValue(TreeNode* root) {
     if (root == NULL) {
         return -1;
