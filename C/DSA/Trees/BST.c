@@ -19,6 +19,8 @@ nd * insert(nd *, int);
 nd * removeData(nd *, int);
 nd * inOrder_predecessor(nd *);
 
+void searchKey(nd *, int, int *);
+
 void preOrder(nd *);
 void inOrder(nd *);
 void postOrder(nd *);
@@ -46,10 +48,11 @@ int main()
         printf("\n           OPERATIONS           \n");
         printf("\n[1] To Insert Data In BST");
         printf("\n[2] To Delete Data From BST");
-        printf("\n[3] To Traverse In BST");
-        printf("\n[4] To Count Childs In BST");
-        printf("\n[5] To Find Min/Max Elements");
-        printf("\n[6] To Exit From The BST");
+        printf("\n[3] To Search A Key In BST");
+        printf("\n[4] To Traverse In BST");
+        printf("\n[5] To Count Childs In BST");
+        printf("\n[6] To Find Min/Max Elements");
+        printf("\n[7] To Exit From The BST");
         printf("\n\nChoose Operation ----> ");
         scanf("%d", &choice);
 
@@ -74,6 +77,27 @@ int main()
                 goto menu;
 
             case 3:
+
+                int key;
+                int flag = 0;
+                printf("\nEnter Key To Search --> ");
+                scanf("%d", &key);
+                searchKey(root, key, &flag);
+
+                if (flag == 0)
+                {
+                    printf("\nKEY NOT FOUND !");
+                    sleep(3);
+                    goto menu;
+                }
+                else
+                {
+                    printf("\nKEY FOUND !");
+                    sleep(3);
+                    goto menu;
+                }
+
+            case 4:
 
                 int traverse_choice;
 
@@ -125,7 +149,7 @@ int main()
 
                 break;
 
-            case 4:
+            case 5:
 
                 int ln = 0;
                 int lc, rc, bc = 0;
@@ -186,7 +210,7 @@ int main()
 
                 break;
 
-            case 5:
+            case 6:
 
                 int min;
                 int max;
@@ -200,7 +224,7 @@ int main()
                     printf("\n[2] To Find Maximum Element");
                     printf("\n[3] To Go To Main Menu");
                     printf("\n\nChoose Option --> ");
-                    scanf("%d", &comp_choice);
+                    scanf("%d", &min_max_choice);
 
                     switch (min_max_choice)
                     {
@@ -229,7 +253,7 @@ int main()
                             goto min_max_menu;
                     }
 
-            case 6:
+            case 7:
 
                 printf("\nTHANK YOU !");
                 sleep(2);
@@ -311,6 +335,20 @@ nd * removeData(nd *root, int value)
     }
 
     return root;
+}
+
+void searchKey(nd *root, int key, int *flag)
+{
+    if (root!=NULL)
+    {
+        if (root->data == key)
+        {
+            (*flag)++;
+        }
+
+        searchKey(root->left, key, flag);
+        searchKey(root->right, key, flag);
+    }
 }
 
 nd * inOrder_predecessor(nd *root)
