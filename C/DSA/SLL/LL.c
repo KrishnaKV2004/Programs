@@ -88,7 +88,7 @@ nd * split(nd *head, nd *spl)
     printf("\nEnter Split value --> ");
     scanf("%d", &splitValue);
 
-    for(iterate=1;iterate<splitValue;iterate++)
+    for (iterate=1; iterate<splitValue; iterate++)
     {
         temp = temp->next;
     }

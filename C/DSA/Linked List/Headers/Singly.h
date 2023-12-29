@@ -17,7 +17,7 @@ nd * c_del(nd *, int);        //  To Delete Node From Custom Position
 nd * a_del(nd *, int *);      //  To Delete Alternate Nodes In The List
 
 nd * rev(nd *);               //  To Reverse The Linked List
-nd * rotate(nd *, int);            //  To Rotate The Linked List
+nd * rotate(nd *, int);       //  To Rotate The Linked List
 
 void f_view(nd *);            //  To View Full Data In Linked List
 void c_view(nd *, int);       //  To View Specific Node Data In Linked List
