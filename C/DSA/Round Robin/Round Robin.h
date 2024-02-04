@@ -63,6 +63,7 @@ void menu()
     dash(DASH);
     printf("\n  T  |    Set Time Quantum For Processor              ");
     printf("\n  R  |    Register Processes In Processor             ");
+    printf("\n  D  |    Delete A Process In Processor               ")
     printf("\n  V  |    View Processes In Processor                 ");
     printf("\n  S  |    Start Execution Of Processes                ");
     printf("\n  B  |    See Burst Time Of Processes                 ");
@@ -118,6 +119,22 @@ nd * enqueue(nd *head, int process_id, int burst_time)
     newnode->next = head;
 
     return head;
+}
+
+nd * dequeue(nd *head, int process_id)
+{
+    nd *temp = head;
+
+    while(temp->next!=NULL)
+    {
+        if (temp->Process_ID==process_id)
+        {
+            if (head->next == NULL)
+            {
+                
+            }
+        }
+    }
 }
 
 void view_processes(nd *head, int process_count)

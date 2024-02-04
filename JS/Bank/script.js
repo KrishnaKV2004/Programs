@@ -30,8 +30,8 @@ const accounts = savedAccounts ? JSON.parse(savedAccounts) : [
   },
   {
     owner: "Krishna Verma",
-    movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -300, 1500, -1850],
-    interestRate: 2.3, // %
+    movements: [54204255, 202252525, 747225726, -790252, -321025, -124250, 249295825, -928592, 8942948298, -185250],
+    interestRate: 2.8, // %
     password: 5678,
     movementsDates: [
       "2021-12-11T21:31:17.671Z",
