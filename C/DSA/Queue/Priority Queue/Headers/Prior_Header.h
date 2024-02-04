@@ -59,7 +59,22 @@ prior_queue * enqueue(prior_queue *head)
 
 prior_queue * dequeue(prior_queue *head)
 {
+    if (head == NULL)
+    {
+        printf("\nPriority Queue Is Empty !");
 
+        return head;
+    }
+
+    else
+    {
+        prior_queue *temp = head;
+
+        head = head->next;
+        free(temp);
+
+        return head;
+    }
 }
 
 void prior_queue_display(prior_queue *head)

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership Form</title>
+
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+    
+    <h1 class="formhead">GRAN TURISMO MEMBERSHIP !</h1>
+    
+    <form action="">
+        <h2>Payment Form</h2>
+        <br>
+        <fieldset>
+            <legend>&nbsp;MEMBERSHIP FORM&nbsp;</legend>
+
+                <h4>PERSON INFO --></h4>
+
+                <p>Name : <input type="text" name="name" id="name" required></p>
+                <p>Male : <input type="radio" name="Gender" id="M"> Female : <input type="radio" name="Gender" id="F" required></p>
+                <p>Address : <textarea name="address" id="address" cols="50" rows="1"></textarea></p>
+                <p>E MAIL : <input type="email" name="email" id="email" required></p>
+                <p>Contact : <input type="number" name="contact" id="contact" required></p>
+
+                <h4>PAYMENT INFO --></h4>
+
+                <p>Card : <select name="card" id="card">
+                    <option value="">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Card Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </option>
+                    <option value="visa">
+                        Visa
+                    </option>
+                    <option value="rupay">
+                        Rupay
+                    </option>
+                    <option value="master">
+                        Master Card
+                    </option>
+                </select></p>
+                <p>Card Number : <input type="number" name="card number" id="card number" required></p>
+                <p>Expiry Date : <input type="date" name="exp date" id="exp date" required></p>
+                <p>CVV : <input type="password" name="cvv" id="cvv" required></p>
+                <p><h4>Submit Form --> <input type="submit" value="&nbsp; Become A Member &nbsp;"></h4></p>
+
+    </fieldset>
+    </form>
+
+</body>
+</html>

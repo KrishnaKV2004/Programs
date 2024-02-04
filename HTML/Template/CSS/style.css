@@ -1,0 +1,75 @@
+*
+{
+    font-family: 'Cascadia Code', Noto Sans JP', sans-serif;
+}
+
+h1
+{
+    color: white;
+    background-color: black;
+    padding: 10px;
+    text-align: center;
+}
+
+h3.form
+{
+    color: white;
+    background-color: black;
+    padding: 10px;
+    text-align: center;
+}
+
+h1.formhead
+{
+    color: white;
+    background-color: black;
+    padding: 10px;
+}
+
+h2.spechead
+{
+    color: white;
+    background-color: black;
+    padding: 10px;
+}
+
+a.br_link
+{
+    text-decoration: none;
+}
+
+a.br_link:visited
+{
+    color: blue;
+    text-decoration: none;
+}
+
+a.main_page
+{
+    color: blue;
+    text-decoration: none;
+}
+
+a.specs
+{
+    color: blue;
+    text-decoration: none;
+}
+
+a.specs:visited
+{
+    text-decoration: dashed;
+}
+
+table, tr, th, td
+{
+    border: 2px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+}
+
+th.head
+{
+    color: white;
+    background-color: black;
+}

@@ -65,6 +65,8 @@ int main()
                 printf("\n# -------- Priority Queue -------- #\n");
                 head = dequeue(head);
                 node_count--;
+                printf("\nData Dequeued Successfully !");
+                sleep(3);
                 goto menu;
 
             case 'V':
