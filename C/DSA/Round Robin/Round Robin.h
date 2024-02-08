@@ -35,12 +35,7 @@ void dash(int dashes)
 
 void new_line(int lines)
 {
-    int iteration;
-
-    for (iteration = 1; iteration <= lines; iteration ++)
-    {
-        printf("\n");
-    }
+    
 }
 
 void ver_line(int ver_lines)
