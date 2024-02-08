@@ -16,10 +16,12 @@ void findIndices(int arr[], int n)
             {
                 cout << i << " " << j << " " << k << endl;
                 return;
-            } else if (sum < arr[k])
+            }
+            else if (sum < arr[k])
             {
                 i++;
-            } else
+            }
+            else
             {
                 j--;
             }
