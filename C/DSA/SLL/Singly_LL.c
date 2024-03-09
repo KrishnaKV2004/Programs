@@ -16,25 +16,26 @@ typedef struct Node
 
 //  Function Declaration-->
 
-nd * f_ins(nd *);             //  To Insert Node At First Position
-nd * l_ins(nd *);             //  To Insert Node At Last Position
-nd * s_ins(nd *);             //  To Sort The List While Inserting
-nd * c_ins(nd *, int);        //  To Insert Node At Custom Position
+nd * f_ins(nd *);                   //  To Insert Node At First Position
+nd * l_ins(nd *);                   //  To Insert Node At Last Position
+nd * s_ins(nd *);                   //  To Sort The List While Inserting
+nd * c_ins(nd *, int);              //  To Insert Node At Custom Position
 
-nd * f_del(nd *);             //  To Delete First Node Of Linked List
-nd * l_del(nd *);             //  To Delete Last Node Of Linked List
-nd * c_del(nd *, int);        //  To Delete Node From Custom Position
-nd * a_del(nd *, int *);      //  To Delete Alternate Nodes In The List
+nd * f_del(nd *);                   //  To Delete First Node Of Linked List
+nd * l_del(nd *);                   //  To Delete Last Node Of Linked List
+nd * c_del(nd *, int);              //  To Delete Node From Custom Position
+nd * a_del(nd *, int *);            //  To Delete Alternate Nodes In The List
 
-nd * rev(nd *);               //  To Reverse The Linked List
-nd * rotate(nd *, int);       //  To Rotate The Linked List
+nd * rev(nd *);                     //  To Reverse The Linked List
+nd * rotate(nd *, int);             //  To Rotate The Linked List
+nd * pair_rev(nd *, int, int);      //  To Reverse Linked List In Pairs
 
-void f_view(nd *);            //  To View Full Data In Linked List
-void c_view(nd *, int);       //  To View Specific Node Data In Linked List
+void f_view(nd *);                  //  To View Full Data In Linked List
+void c_view(nd *, int);             //  To View Specific Node Data In Linked List
 
-void nd_cn(int);              //  To Display Number Of Nodes In Linked List
-void sort(nd *);              //  To Sort The Linked List
-void middle(nd *, int);       //  To Display The Middle Node Of Linked List
+void nd_cn(int);                    //  To Display Number Of Nodes In Linked List
+void sort(nd *);                    //  To Sort The Linked List
+void middle(nd *, int);             //  To Display The Middle Node Of Linked List
 
 //  Main Function -->
 
@@ -60,6 +61,7 @@ int main()
         printf("\n[M] To View Middle Node");
         printf("\n[S] To Sort The List");
         printf("\n[R] To Reverse The List");
+        printf("\n[P] To Reverse List In Pairs");
         printf("\n[K] To Rotate The Linked List");
         printf("\n[E] To Exit Linked List");
         printf("\n\nChoose Operation ----> ");
@@ -271,6 +273,18 @@ int main()
 
                 //  Function To Reverse The Linked List
                 head = rev(head);
+                break;
+
+            case 'P' :
+            case 'p' :
+
+                //  Function To Reverse List In Pairs
+                int key;
+
+                printf("\nEnter Key Value To Reverse --> ");
+                scanf("%d", &key);
+
+                head = pair_rev(head, node_count, key);
                 break;
 
             case 'K' :
@@ -644,8 +658,6 @@ nd* a_del(nd *head, int *node_count)
 
 nd * rev(nd *head)
 {
-    char see;       //  To See Reversed Linked List
-
     //  Checking If List Is Empty
     if (head == NULL)
     {
@@ -676,6 +688,43 @@ nd * rev(nd *head)
     f_view(head);
 
     return head;
+}
+
+nd * pair_rev(nd *head, int node_count, int key)
+{
+    //  Checking If Linked List Is Empty
+    if (head == NULL)
+    {
+        printf("\nLinked List Is Empty !\n");
+        return NULL;
+    }
+
+    int count = 0;
+
+    nd * prev = NULL;
+    nd * curr = head;
+    nd * nxt = NULL;
+
+    while (curr != NULL && count < key)
+    {
+        nxt = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = nxt;
+
+        count ++;
+    }
+
+    if (nxt != NULL)
+    {
+        head->next = pair_rev(nxt, node_count, key);
+    }
+
+    printf("\nLinked List Reversed Successfully !\n");
+
+    f_view(head);
+
+    return prev;
 }
 
 void f_view(nd *head)
