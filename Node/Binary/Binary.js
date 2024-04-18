@@ -34,7 +34,7 @@ function main()
             rl.question('\nEnter A String --> ', (inputString) =>
             {
                 const binary = stringToBinary(inputString)
-                console.log(`Binary: ${binary}`)
+                console.log(`\nBinary --> \n\n${binary}`)
                 askToContinue()
             })
         }
@@ -43,7 +43,7 @@ function main()
             rl.question('\nEnter Binary (Space-Separated) --> ', (binaryString) =>
             {
                 const string = binaryToString(binaryString)
-                console.log(`String: ${string}`)
+                console.log(`\nString --> \n\n${string}`)
                 askToContinue()
             })
         }
